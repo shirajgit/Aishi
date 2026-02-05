@@ -1,6 +1,40 @@
- import React from "react";
+import React from "react";
 
-const services = [
+/* =======================
+   Types
+======================= */
+type Service = {
+  title: string;
+  desc: string;
+  tag: string;
+};
+
+type Project = {
+  title: string;
+  desc: string;
+  badge: string;
+};
+
+type StatProps = {
+  label: string;
+  value: string;
+};
+
+type MiniItemProps = {
+  title: string;
+  desc: string;
+};
+
+type StepProps = {
+  n: string;
+  title: string;
+  desc: string;
+};
+
+/* =======================
+   Data
+======================= */
+const services: Service[] = [
   {
     title: "Software Solutions",
     desc: "Web apps, dashboards, portals, ERP/CRM, and custom systems for businesses and institutes.",
@@ -23,7 +57,7 @@ const services = [
   },
 ];
 
-const industries = [
+const industries: string[] = [
   "Businesses & Startups",
   "Schools & Colleges",
   "Clinics & Hospitals",
@@ -31,7 +65,7 @@ const industries = [
   "Home Automation Projects",
 ];
 
-const projects = [
+const projects: Project[] = [
   {
     title: "Staff Management System",
     desc: "Role-based login, attendance, admin dashboards, reports.",
@@ -49,7 +83,10 @@ const projects = [
   },
 ];
 
-export default function App() {
+/* =======================
+   App
+======================= */
+const App: React.FC = () => {
   return (
     <main className="min-h-screen bg-[#070a12] text-white">
       {/* NAV */}
@@ -57,7 +94,7 @@ export default function App() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
           <a href="#home" className="flex items-center gap-2">
             <div className="grid h-9 w-9 place-items-center rounded-xl bg-white/10">
-              <span className="font-black tracking-wide">A</span>
+               <img src="/Aishi.png" alt="" className="rounded-2xl" />
             </div>
             <div className="leading-tight">
               <p className="text-sm font-semibold">AISHI</p>
@@ -66,18 +103,15 @@ export default function App() {
           </a>
 
           <nav className="hidden items-center gap-6 md:flex">
-            <a className="text-sm text-white/70 hover:text-white" href="#services">
-              Services
-            </a>
-            <a className="text-sm text-white/70 hover:text-white" href="#work">
-              Work
-            </a>
-            <a className="text-sm text-white/70 hover:text-white" href="#process">
-              Process
-            </a>
-            <a className="text-sm text-white/70 hover:text-white" href="#contact">
-              Contact
-            </a>
+            {["services", "industries", "work", "process", "contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item}`}
+                className="text-sm text-white/70 hover:text-white"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+            ))}
           </nav>
 
           <a
@@ -96,91 +130,88 @@ export default function App() {
           <div className="absolute bottom-[-220px] right-[-180px] h-[520px] w-[520px] rounded-full bg-indigo-500/15 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 py-16 md:py-24">
-          <div className="grid gap-10 md:grid-cols-2 md:items-center">
-            <div>
-              <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
-                🚀 Software + AI + Hardware Designing
-              </p>
+        <div className="relative mx-auto max-w-7xl px-5 py-16 md:py-24 grid gap-10 md:grid-cols-2">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+              🚀 Software + AI + Hardware Designing
+            </p>
 
-              <h1 className="mt-4 text-4xl font-black leading-tight md:text-5xl">
-                Build smart{" "}
-                <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-                  software solutions
-                </span>{" "}
-                for business, schools & automation.
-              </h1>
+            <h1 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
+              Build smart{" "}
+              <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+                software solutions
+              </span>{" "}
+              for business, schools & automation.
+            </h1>
 
-              <p className="mt-4 max-w-xl text-base text-white/70">
-                AISHI delivers modern web apps, AI-powered features, and IoT/home automation
-                systems — designed to be fast, clean, and scalable.
-              </p>
+            <p className="mt-4 max-w-xl text-white/70">
+              AISHI delivers modern web apps, AI-powered features, and IoT/home automation
+              systems — fast, scalable, and clean.
+            </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                <a
-                  href="#services"
-                  className="rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 px-5 py-3 text-sm font-semibold hover:opacity-95"
-                >
-                  Explore Services
-                </a>
-                <a
-                  href="#work"
-                  className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
-                >
-                  View Work
-                </a>
-              </div>
-
-              <div className="mt-8 grid max-w-xl grid-cols-3 gap-3">
-                <Stat label="Fast Delivery" value="7–21 days" />
-                <Stat label="Modern UI" value="Tailwind" />
-                <Stat label="Support" value="Post launch" />
-              </div>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#services"
+                className="rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 px-5 py-3 text-sm font-semibold hover:opacity-95"
+              >
+                Explore Services
+              </a>
+              <a
+                href="#work"
+                className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
+              >
+                View Work
+              </a>
             </div>
 
-            {/* Hero Card */}
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04)]">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-sm font-semibold text-white/90">AISHI Solutions</p>
-                  <p className="mt-1 text-xs text-white/60">What we build for you (examples)</p>
-                </div>
-                <span className="rounded-full bg-cyan-500/15 px-3 py-1 text-xs text-cyan-200">
-                  Custom
-                </span>
-              </div>
+            <div className="mt-8 grid max-w-xl grid-cols-3 gap-3">
+              <Stat label="Fast Delivery" value="7–21 days" />
+              <Stat label="Modern UI" value="Tailwind" />
+              <Stat label="Support" value="Post launch" />
+            </div>
+          </div>
 
-              <div className="mt-5 space-y-3">
-                <MiniItem
-                  title="Business Management System"
-                  desc="Users, billing, reports, CRM, dashboards."
-                />
-                <MiniItem
-                  title="School/College Portal"
-                  desc="Attendance, student info, staff & admin panel."
-                />
-                <MiniItem
-                  title="Home Automation (IoT)"
-                  desc="Smart lights, sensors, remote control, monitoring."
-                />
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold text-white/90">AISHI Solutions</p>
+                <p className="mt-1 text-xs text-white/60">What we build for you (examples)</p>
               </div>
+              <span className="rounded-full bg-cyan-500/15 px-3 py-1 text-xs text-cyan-200">
+                Custom
+              </span>
+            </div>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-[#0b1220] p-4">
-                <p className="text-xs text-white/60">Tech stack (typical)</p>
-                <p className="mt-2 text-sm text-white/85">
-                  React • TypeScript • Tailwind • Node • MongoDB • IoT
-                </p>
-              </div>
+            <div className="mt-5 space-y-3">
+              <MiniItem
+                title="Business Management System"
+                desc="Users, billing, reports, CRM, dashboards."
+              />
+              <MiniItem
+                title="School / College Portal"
+                desc="Attendance, student info, staff & admin panel."
+              />
+              <MiniItem
+                title="Home Automation (IoT)"
+                desc="Smart lights, sensors, remote control."
+              />
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-[#0b1220] p-4">
+              <p className="text-xs text-white/60">Tech stack (typical)</p>
+              <p className="mt-2 text-sm text-white/85">
+                React • TypeScript • Tailwind • Node • MongoDB • IoT
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="mx-auto max-w-7xl px-5 py-14 md:py-20">
+      <section id="services" className="mx-auto max-w-7xl px-5 py-20">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-extrabold md:text-3xl">Services</h2>
+            <h2 className="text-3xl font-extrabold">Services</h2>
             <p className="mt-2 max-w-2xl text-sm text-white/70">
               End-to-end solutions: design → development → deployment → support.
             </p>
@@ -215,7 +246,7 @@ export default function App() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="mx-auto max-w-7xl px-5 pb-14 md:pb-20">
+      <section id="industries" className="mx-auto max-w-7xl px-5 pb-20">
         <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-white/5 to-white/0 p-6 md:p-8">
           <h3 className="text-xl font-extrabold">Who we help</h3>
           <p className="mt-2 text-sm text-white/70">
@@ -223,12 +254,12 @@ export default function App() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            {industries.map((i) => (
+            {industries.map((industry) => (
               <span
-                key={i}
+                key={industry}
                 className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/80"
               >
-                {i}
+                {industry}
               </span>
             ))}
           </div>
@@ -236,8 +267,8 @@ export default function App() {
       </section>
 
       {/* WORK */}
-      <section id="work" className="mx-auto max-w-7xl px-5 py-14 md:py-20">
-        <h2 className="text-2xl font-extrabold md:text-3xl">Recent Work</h2>
+      <section id="work" className="mx-auto max-w-7xl px-5 py-20">
+        <h2 className="text-3xl font-extrabold">Recent Work</h2>
         <p className="mt-2 max-w-2xl text-sm text-white/70">
           A few examples of what AISHI can deliver (customized to your needs).
         </p>
@@ -276,18 +307,18 @@ export default function App() {
       </section>
 
       {/* PROCESS */}
-      <section id="process" className="mx-auto max-w-7xl px-5 pb-14 md:pb-20">
+      <section id="process" className="mx-auto max-w-7xl px-5 pb-20">
         <div className="rounded-3xl border border-white/10 bg-[#0b1220] p-6 md:p-8">
-          <h2 className="text-2xl font-extrabold md:text-3xl">Process</h2>
+          <h2 className="text-3xl font-extrabold">Process</h2>
           <p className="mt-2 max-w-2xl text-sm text-white/70">
             Simple and clear flow so you always know what’s happening.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-4">
-            <Step n="01" title="Requirement" desc="We understand your exact need + budget." />
-            <Step n="02" title="UI Design" desc="Modern design + mobile responsive layout." />
-            <Step n="03" title="Development" desc="Fast build with clean code & best practices." />
-            <Step n="04" title="Deploy & Support" desc="Go live + bug fixes + updates if needed." />
+            <Step n="01" title="Requirement" desc="Understanding goals & budget." />
+            <Step n="02" title="UI Design" desc="Clean, responsive UI." />
+            <Step n="03" title="Development" desc="Scalable & secure code." />
+            <Step n="04" title="Deploy" desc="Launch & post-support." />
           </div>
         </div>
       </section>
@@ -299,18 +330,19 @@ export default function App() {
             Let’s build your project with AISHI
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-white/70">
-            Send your requirement: what you want, deadline, and budget range — we’ll respond with a plan.
+            Send your requirement: what you want, deadline, and budget range — we’ll respond
+            with a plan.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href="mailto:yourmail@example.com"
+              href="mailto:shirajmujawar03@gmail.com"
               className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90"
             >
               Email Us
             </a>
             <a
-              href="https://wa.me/91XXXXXXXXXX"
+              href="https://wa.me/918105369922"
               className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold hover:bg-white/10"
             >
               WhatsApp
@@ -330,52 +362,36 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/10 py-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm text-white/60">
-            © {new Date().getFullYear()} AISHI — AI with Shiraj. All rights reserved.
-          </p>
-          <div className="flex gap-4 text-sm">
-            <a className="text-white/60 hover:text-white" href="#services">
-              Services
-            </a>
-            <a className="text-white/60 hover:text-white" href="#work">
-              Work
-            </a>
-            <a className="text-white/60 hover:text-white" href="#contact">
-              Contact
-            </a>
-          </div>
-        </div>
+      <footer className="border-t border-white/10 py-8 text-center text-white/60">
+        © {new Date().getFullYear()} AISHI — AI with Shiraj
       </footer>
     </main>
   );
-}
+};
 
-function Stat({ label, value }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-      <p className="text-xs text-white/60">{label}</p>
-      <p className="mt-1 text-sm font-semibold">{value}</p>
-    </div>
-  );
-}
+export default App;
 
-function MiniItem({ title, desc }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-      <p className="text-sm font-semibold">{title}</p>
-      <p className="mt-1 text-xs text-white/65">{desc}</p>
-    </div>
-  );
-}
+/* =======================
+   Components
+======================= */
+const Stat: React.FC<StatProps> = ({ label, value }) => (
+  <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+    <p className="text-xs text-white/60">{label}</p>
+    <p className="mt-1 font-semibold">{value}</p>
+  </div>
+);
 
-function Step({ n, title, desc }) {
-  return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-      <p className="text-xs font-bold text-cyan-200">{n}</p>
-      <p className="mt-2 text-sm font-semibold">{title}</p>
-      <p className="mt-2 text-sm text-white/70">{desc}</p>
-    </div>
-  );
-}
+const MiniItem: React.FC<MiniItemProps> = ({ title, desc }) => (
+  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+    <p className="font-semibold">{title}</p>
+    <p className="mt-1 text-sm text-white/70">{desc}</p>
+  </div>
+);
+
+const Step: React.FC<StepProps> = ({ n, title, desc }) => (
+  <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+    <p className="text-xs font-bold text-cyan-200">{n}</p>
+    <p className="mt-2 font-semibold">{title}</p>
+    <p className="mt-2 text-sm text-white/70">{desc}</p>
+  </div>
+);
