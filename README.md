@@ -91,7 +91,7 @@ AI • Software • Automation
 
 - LinkedIn: *https://www.linkedin.com/company/aishi-technologies*
 - Email: *shirajmujawar03@gamail.com*
-- Website: *[https://aishi-tech](https://aishi-technologies.vercel.app/)*
+- Website: *https://aishi-technologies.vercel.app*
 
 ---
 
