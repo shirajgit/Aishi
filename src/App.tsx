@@ -32,27 +32,27 @@ type StepProps = {
 };
 
 /* =======================
-   Data
+   Data (UPDATED COPY)
 ======================= */
 const services: Service[] = [
   {
-    title: "Software Solutions",
-    desc: "Web apps, dashboards, portals, ERP/CRM, and custom systems for businesses and institutes.",
+    title: "Custom Web Apps That Automate Work",
+    desc: "Dashboards, portals, ERP/CRM systems built to reduce manual work and improve efficiency.",
     tag: "Web / SaaS",
   },
   {
-    title: "AI Integrations",
-    desc: "AI features like chat assistants, automation, smart search, and insights.",
+    title: "AI Features & Automation",
+    desc: "Chat assistants, smart search, workflows, and insights that save hours every week.",
     tag: "AI",
   },
   {
-    title: "School / College Systems",
-    desc: "Attendance, fees, timetable, staff management, student portals, and admin panels.",
+    title: "School / College Management Systems",
+    desc: "Attendance, fees, staff management, student portals, admin panel & reporting.",
     tag: "Education",
   },
   {
-    title: "Hardware Designing",
-    desc: "Home automation, IoT controls, smart devices, sensors, and embedded prototyping.",
+    title: "IoT & Hardware Prototyping",
+    desc: "Home automation, sensors, embedded prototyping, and smart device controls.",
     tag: "IoT",
   },
 ];
@@ -68,17 +68,17 @@ const industries: string[] = [
 const projects: Project[] = [
   {
     title: "Staff Management System",
-    desc: "Role-based login, attendance, admin dashboards, reports.",
+    desc: "Role-based access, attendance tracking, admin dashboards, and export-ready reports.",
     badge: "React • API",
   },
   {
     title: "AI Resume Analyzer",
-    desc: "Extracts skills + matches with JD and gives score & suggestions.",
+    desc: "Skills extraction + JD match scoring with suggestions to improve candidate fit.",
     badge: "React • AI",
   },
   {
     title: "Client Websites",
-    desc: "Fast landing pages with modern UI and responsive design.",
+    desc: "Fast, responsive landing pages designed for lead generation and trust.",
     badge: "React • Tailwind",
   },
 ];
@@ -94,31 +94,33 @@ const App: React.FC = () => {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
           <a href="#home" className="flex items-center gap-2">
             <div className="grid h-9 w-9 place-items-center rounded-xl bg-white/10">
-               <img src="/Aishi.png" alt="" className="rounded-2xl" />
+              <img src="/Aishi.png" alt="Aishi logo" className="rounded-2xl" />
             </div>
             <div className="leading-tight">
               <p className="text-sm font-semibold">AISHI</p>
-              <p className="text-xs text-white/60">AI with Shiraj</p>
+              <p className="text-xs text-white/60"> AI with Shiraj</p>
             </div>
           </a>
 
           <nav className="hidden items-center gap-6 md:flex">
-            {["services", "industries", "work", "process", "contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item}`}
-                className="text-sm text-white/70 hover:text-white"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </a>
-            ))}
+            {["services", "industries", "work", "process", "contact"].map(
+              (item) => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  className="text-sm text-white/70 hover:text-white"
+                >
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </a>
+              )
+            )}
           </nav>
 
           <a
             href="#contact"
             className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90"
           >
-            Get Quote
+            Get Free Consultation
           </a>
         </div>
       </header>
@@ -130,52 +132,61 @@ const App: React.FC = () => {
           <div className="absolute bottom-[-220px] right-[-180px] h-[520px] w-[520px] rounded-full bg-indigo-500/15 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 py-16 md:py-24 grid gap-10 md:grid-cols-2">
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
-              🚀 Software + AI + Hardware Designing
+              🚀 Web Apps • AI Automation • IoT Solutions
             </p>
 
-            <h1 className="mt-4 text-4xl md:text-5xl font-black leading-tight">
-              Build smart{" "}
+            <h1 className="mt-4 text-4xl font-black leading-tight md:text-5xl">
+              We build{" "}
               <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-                software solutions
+                scalable web apps, AI automation & IoT
               </span>{" "}
-              for business, schools & automation.
+              that grow your business.
             </h1>
 
             <p className="mt-4 max-w-xl text-white/70">
-              AISHI delivers modern web apps, AI-powered features, and IoT/home automation
-              systems — fast, scalable, and clean.
+              Aishi Technologies helps businesses and institutes move faster with
+              custom web apps, AI-powered automation, and IoT systems — built
+              clean, secure, and scalable.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <a
-                href="#services"
+                href="#contact"
                 className="rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 px-5 py-3 text-sm font-semibold hover:opacity-95"
               >
-                Explore Services
+                Get Started
               </a>
               <a
                 href="#work"
                 className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10"
               >
-                View Work
+                See Recent Work
               </a>
             </div>
 
             <div className="mt-8 grid max-w-xl grid-cols-3 gap-3">
-              <Stat label="Fast Delivery" value="7–21 days" />
-              <Stat label="Modern UI" value="Tailwind" />
-              <Stat label="Support" value="Post launch" />
+              <Stat label="Delivery" value="7–21 days" />
+              <Stat label="UI + UX" value="Modern & clean" />
+              <Stat label="Support" value="After launch" />
             </div>
+
+            <p className="mt-4 text-xs text-white/60">
+              ⚡ Reply time: within 24 hours • 📌 Free initial consultation
+            </p>
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold text-white/90">AISHI Solutions</p>
-                <p className="mt-1 text-xs text-white/60">What we build for you (examples)</p>
+                <p className="text-sm font-semibold text-white/90">
+                  AISHI Solutions
+                </p>
+                <p className="mt-1 text-xs text-white/60">
+                  Popular solutions clients ask for
+                </p>
               </div>
               <span className="rounded-full bg-cyan-500/15 px-3 py-1 text-xs text-cyan-200">
                 Custom
@@ -185,15 +196,15 @@ const App: React.FC = () => {
             <div className="mt-5 space-y-3">
               <MiniItem
                 title="Business Management System"
-                desc="Users, billing, reports, CRM, dashboards."
+                desc="CRM, billing, staff roles, reports, dashboards — everything in one place."
               />
               <MiniItem
                 title="School / College Portal"
-                desc="Attendance, student info, staff & admin panel."
+                desc="Attendance, fees, timetable, student profiles, staff panel & admin controls."
               />
               <MiniItem
                 title="Home Automation (IoT)"
-                desc="Smart lights, sensors, remote control."
+                desc="Smart lights, sensors, remote control, dashboards & mobile-friendly control."
               />
             </div>
 
@@ -213,7 +224,8 @@ const App: React.FC = () => {
           <div>
             <h2 className="text-3xl font-extrabold">Services</h2>
             <p className="mt-2 max-w-2xl text-sm text-white/70">
-              End-to-end solutions: design → development → deployment → support.
+              From idea → UI → development → deployment. You get a clear plan,
+              clean execution, and support after launch.
             </p>
           </div>
 
@@ -239,18 +251,21 @@ const App: React.FC = () => {
               </div>
               <p className="mt-3 text-sm text-white/70">{s.desc}</p>
               <div className="mt-5 h-px bg-white/10" />
-              <p className="mt-4 text-xs text-white/60">✅ Clean UI • ✅ Secure • ✅ Scalable</p>
+              <p className="mt-4 text-xs text-white/60">
+                ✅ Clean UI • ✅ Secure • ✅ Scalable
+              </p>
             </div>
           ))}
         </div>
       </section>
 
       {/* INDUSTRIES */}
-      <section id="industries" className="mx-auto max-w-7xl px-5 pb-20">
+      <section id="industries" className="mx-auto max-w-7xl px-5 pb-12">
         <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-white/5 to-white/0 p-6 md:p-8">
           <h3 className="text-xl font-extrabold">Who we help</h3>
           <p className="mt-2 text-sm text-white/70">
-            We build solutions for these domains (and more).
+            We work with businesses and institutes that want faster operations,
+            better tracking, and modern digital systems.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -266,11 +281,45 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* TRUST STRIP (NEW) */}
+      <section className="mx-auto max-w-7xl px-5 pb-20">
+        <div className="rounded-3xl border border-white/10 bg-[#0b1220] p-6 md:p-8">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h3 className="text-xl font-extrabold">Built to deliver</h3>
+              <p className="mt-1 text-sm text-white/70">
+                Clear scope, clean build, and reliable support — so you can ship
+                with confidence.
+              </p>
+            </div>
+            <a
+              href="#contact"
+              className="mt-3 inline-flex w-fit rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 md:mt-0"
+            >
+              Get a quick estimate
+            </a>
+          </div>
+
+          <div className="mt-6 grid gap-3 md:grid-cols-4">
+            <Stat label="Projects delivered" value="10+" />
+            <Stat label="Happy clients" value="5+" />
+            <Stat label="Typical delivery" value="7–21 days" />
+            <Stat label="Response time" value="< 24 hrs" />
+          </div>
+
+          <p className="mt-4 text-xs text-white/60">
+            Pricing: business websites start from ₹8,999 • Custom systems based
+            on scope
+          </p>
+        </div>
+      </section>
+
       {/* WORK */}
       <section id="work" className="mx-auto max-w-7xl px-5 py-20">
         <h2 className="text-3xl font-extrabold">Recent Work</h2>
         <p className="mt-2 max-w-2xl text-sm text-white/70">
-          A few examples of what AISHI can deliver (customized to your needs).
+          A few recent builds. Every project is custom — tailored to your
+          workflow, users, and goals.
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -285,20 +334,25 @@ const App: React.FC = () => {
                   {p.badge}
                 </span>
               </div>
+
               <p className="mt-3 text-sm text-white/70">{p.desc}</p>
+
+              <p className="mt-4 text-xs text-white/60">
+                ✅ Clean UI • ✅ Role-based access • ✅ Mobile friendly
+              </p>
 
               <div className="mt-6 flex gap-3">
                 <a
                   href="#contact"
                   className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90"
                 >
-                  Build similar
+                  Get This Built
                 </a>
                 <a
                   href="#contact"
                   className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10"
                 >
-                  Discuss
+                  Talk to Us
                 </a>
               </div>
             </div>
@@ -311,14 +365,15 @@ const App: React.FC = () => {
         <div className="rounded-3xl border border-white/10 bg-[#0b1220] p-6 md:p-8">
           <h2 className="text-3xl font-extrabold">Process</h2>
           <p className="mt-2 max-w-2xl text-sm text-white/70">
-            Simple and clear flow so you always know what’s happening.
+            No confusion. You’ll get updates at every step — timeline,
+            milestones, and deliverables.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-4">
-            <Step n="01" title="Requirement" desc="Understanding goals & budget." />
-            <Step n="02" title="UI Design" desc="Clean, responsive UI." />
-            <Step n="03" title="Development" desc="Scalable & secure code." />
-            <Step n="04" title="Deploy" desc="Launch & post-support." />
+            <Step n="01" title="Requirement" desc="Understanding goals, users & budget." />
+            <Step n="02" title="UI Design" desc="Wireframe → modern UI → approval." />
+            <Step n="03" title="Development" desc="Secure code, testing, performance." />
+            <Step n="04" title="Deploy" desc="Launch, monitoring & support." />
           </div>
         </div>
       </section>
@@ -327,11 +382,11 @@ const App: React.FC = () => {
       <section id="contact" className="mx-auto max-w-7xl px-5 pb-20">
         <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/15 via-white/5 to-indigo-500/15 p-6 md:p-10">
           <h2 className="text-2xl font-extrabold md:text-3xl">
-            Let’s build your project with AISHI
+            Tell us what you want — we’ll send a clear plan & quote.
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-white/70">
-            Send your requirement: what you want, deadline, and budget range — we’ll respond
-            with a plan.
+            Share your requirement, deadline, and budget range. We’ll reply with
+            scope, timeline, and the best approach.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -339,7 +394,7 @@ const App: React.FC = () => {
               href="mailto:shirajmujawar03@gmail.com"
               className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-white/90"
             >
-              Email Us
+              Send Requirement
             </a>
             <a
               href="https://wa.me/918105369922"
@@ -351,19 +406,19 @@ const App: React.FC = () => {
               href="#services"
               className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold hover:bg-white/10"
             >
-              See Services
+              View Services
             </a>
           </div>
 
           <p className="mt-4 text-xs text-white/60">
-            *Replace email/WhatsApp links with your real details.
+            ⚡ Reply time: within 24 hours • 📌 Free initial consultation
           </p>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="border-t border-white/10 py-8 text-center text-white/60">
-        © {new Date().getFullYear()} AISHI — AI with Shiraj
+        © {new Date().getFullYear()} Aishi Technologies — Web • AI • IoT
       </footer>
     </main>
   );
