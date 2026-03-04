@@ -83,6 +83,43 @@ const projects: Project[] = [
   },
 ];
 
+
+  const clients = [
+  {
+    name: "Akeel Lights",
+    type: "Business Website",
+    desc: "Lighting & decoration business website with modern UI + inquiry focus.",
+    link: "https://akeel-lights.vercel.app",
+    stack: ["Next.js", "Tailwind", "UI/UX"],
+    highlights: ["Modern homepage", "Service sections", "Lead-friendly CTA"],
+  },
+  {
+    name: "Clickonadzz",
+    type: "Marketing Website",
+    desc: " Digital marketing agency website with clean design and service showcase.",
+    link: "https://clickonadzz.com",
+    stack: ["Next.js", "Tailwind","Framer Motion", "Forms"],
+    highlights: ["Responsive", "Fast UI", "Professional design"],
+  },
+   {
+    name: "Nehra Cars",
+    type: "Car Rental Website",
+    desc: "Self-drive car rental website with clean layout and enquiry flow.",
+    link: "https://nehra-cars.vercel.app",
+    stack: ["Next.js", "Tailwind", "Forms"],
+    highlights: ["Responsive", "Fast UI", "Professional design"],
+  },
+   {
+    name: "VizionExl",
+    type: "it Services Website",
+    desc: "IT services company website with modern UI and service showcase.",
+    link: "https://vizionexl.vercel.app",
+    stack: ["Next.js", "Tailwind", "Forms"],
+    highlights: ["Responsive", "Fast UI", "Professional design"],
+  },
+
+];
+
 /* =======================
    App
 ======================= */
@@ -314,51 +351,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* WORK */}
-      <section id="work" className="mx-auto max-w-7xl px-5 py-20">
-        <h2 className="text-3xl font-extrabold">Recent Work</h2>
-        <p className="mt-2 max-w-2xl text-sm text-white/70">
-          A few recent builds. Every project is custom — tailored to your
-          workflow, users, and goals.
-        </p>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {projects.map((p) => (
-            <div
-              key={p.title}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6 hover:border-white/15"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <p className="text-base font-semibold">{p.title}</p>
-                <span className="rounded-full bg-cyan-500/15 px-3 py-1 text-xs text-cyan-200">
-                  {p.badge}
-                </span>
-              </div>
-
-              <p className="mt-3 text-sm text-white/70">{p.desc}</p>
-
-              <p className="mt-4 text-xs text-white/60">
-                ✅ Clean UI • ✅ Role-based access • ✅ Mobile friendly
-              </p>
-
-              <div className="mt-6 flex gap-3">
-                <a
-                  href="#contact"
-                  className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90"
-                >
-                  Get This Built
-                </a>
-                <a
-                  href="#contact"
-                  className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10"
-                >
-                  Talk to Us
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+  
 
       {/* PROCESS */}
       <section id="process" className="mx-auto max-w-7xl px-5 pb-20">
@@ -378,8 +371,67 @@ const App: React.FC = () => {
         </div>
       </section>
 
+    {/* WORK */}
+      <section id="clients" className="py-24 border-white/10 text-gray-200">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14">
+          Client <span className= " text-indigo-500">Work</span>
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {clients.map((c) => (
+            <div
+              key={c.name}
+              className="rounded-2xl border border-white/10 bg-gradient-to-br from-gray-900/70 to-gray-950/70 p-8 hover:border-yellow-400/30 transition"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xl font-bold">{c.name}</p>
+                  <p className="text-gray-400">{c.type}</p>
+                </div>
+
+                {c.link && (
+                  <a
+                    href={c.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-indigo-500 hover:text-indigo-300 font-semibold"
+                  >
+                    Live →
+                  </a>
+                )}
+              </div>
+
+              <p className="mt-4 text-gray-300">{c.desc}</p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {c.stack.map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1 text-xs rounded-full border border-white/10 bg-white/[0.03]"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <ul className="mt-5 space-y-2 text-gray-400">
+                {c.highlights.map((h) => (
+                  <li key={h} className="flex gap-2">
+                    <span className="text-yellow-400">•</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
       {/* CONTACT */}
-      <section id="contact" className="mx-auto max-w-7xl px-5 pb-20">
+      <section id="contact" className="mx-auto max-w-7xl px-5 py-5 pb-20">
         <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/15 via-white/5 to-indigo-500/15 p-6 md:p-10">
           <h2 className="text-2xl font-extrabold md:text-3xl">
             Tell us what you want — we’ll send a clear plan & quote.
@@ -418,7 +470,7 @@ const App: React.FC = () => {
 
       {/* FOOTER */}
       <footer className="border-t border-white/10 py-8 text-center text-white/60">
-        © {new Date().getFullYear()} Aishi Technologies — Web • AI • IoT
+        © {new Date().getFullYear()} Aishi Technologies — Web • App • AI • IoT 
       </footer>
     </main>
   );
