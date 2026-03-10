@@ -9,12 +9,7 @@ type Service = {
   tag: string;
 };
 
-type Project = {
-  title: string;
-  desc: string;
-  badge: string;
-};
-
+ 
 type StatProps = {
   label: string;
   value: string;
@@ -65,23 +60,7 @@ const industries: string[] = [
   "Home Automation Projects",
 ];
 
-const projects: Project[] = [
-  {
-    title: "Staff Management System",
-    desc: "Role-based access, attendance tracking, admin dashboards, and export-ready reports.",
-    badge: "React • API",
-  },
-  {
-    title: "AI Resume Analyzer",
-    desc: "Skills extraction + JD match scoring with suggestions to improve candidate fit.",
-    badge: "React • AI",
-  },
-  {
-    title: "Client Websites",
-    desc: "Fast, responsive landing pages designed for lead generation and trust.",
-    badge: "React • Tailwind",
-  },
-];
+ 
 
 
   const clients = [
