@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from "react";
-
+ 
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Float, MeshDistortMaterial } from "@react-three/drei";
+import * as THREE from "three";
+ 
 /* =======================
    Types
 ======================= */
@@ -102,6 +106,139 @@ const navItems = [
   { id: "contact", label: "Contact" },
 ];
 
+
+
+
+
+function Orb({
+  position,
+  color,
+  emissive,
+  scale,
+}: {
+  position: [number, number, number];
+  color: string;
+  emissive: string;
+  scale: number;
+}) {
+  const ref = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    if (!ref.current) return;
+    ref.current.rotation.x = state.clock.elapsedTime * 0.08;
+    ref.current.rotation.y = state.clock.elapsedTime * 0.14;
+  });
+
+  return (
+    <Float speed={1.8} rotationIntensity={1.2} floatIntensity={1.5}>
+      <mesh ref={ref} position={position} scale={scale}>
+        <sphereGeometry args={[1, 128, 128]} />
+        <MeshDistortMaterial
+          color={color}
+          emissive={emissive}
+          emissiveIntensity={0.6}
+          distort={0.35}
+          speed={2}
+          roughness={0.15}
+          metalness={0.5}
+          transparent
+          opacity={0.9}
+        />
+      </mesh>
+    </Float>
+  );
+}
+
+function Particles() {
+  const points = useRef<THREE.Points>(null);
+
+  const count = 120;
+  const positions = new Float32Array(count * 3);
+
+  for (let i = 0; i < count; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 18;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+  }
+
+  useFrame((state) => {
+    if (!points.current) return;
+    points.current.rotation.y = state.clock.elapsedTime * 0.03;
+    points.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.15) * 0.08;
+  });
+
+  return (
+    <points ref={points}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={positions.length / 3}
+          array={positions}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.045}
+        color="#67e8f9"
+        transparent
+        opacity={0.8}
+        sizeAttenuation
+      />
+    </points>
+  );
+}
+
+function SceneLights() {
+  return (
+    <>
+      <ambientLight intensity={0.8} />
+      <pointLight position={[4, 3, 4]} intensity={2.2} color="#22d3ee" />
+      <pointLight position={[-4, -2, 2]} intensity={1.8} color="#6366f1" />
+      <directionalLight position={[0, 3, 2]} intensity={1.2} color="#ffffff" />
+    </>
+  );
+}
+
+function ThreeBackground() {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-0 opacity-80">
+      <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
+        <Suspense fallback={null}>
+          <SceneLights />
+          <Particles />
+          <Orb
+            position={[-3.8, 1.8, -1]}
+            color="#22d3ee"
+            emissive="#0f766e"
+            scale={1.5}
+          />
+          <Orb
+            position={[4.2, -1.6, -1.5]}
+            color="#6366f1"
+            emissive="#312e81"
+            scale={2}
+          />
+          <Orb
+            position={[0.4, 2.8, -3]}
+            color="#60a5fa"
+            emissive="#1d4ed8"
+            scale={0.9}
+          />
+        </Suspense>
+      </Canvas>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
 /* =======================
    App
 ======================= */
@@ -124,8 +261,8 @@ const App: React.FC = () => {
   }, [open]);
 
   return (
-    <main className="min-h-screen scroll-smooth bg-[#050814] text-white">
-      {/* NAVBAR */}
+    <main className="relative min-h-screen scroll-smooth overflow-hidden bg-[#050814] text-white">
+  <ThreeBackground />
       <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
         <div
           className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-3 transition-all duration-300 md:px-6 ${
@@ -312,7 +449,7 @@ const App: React.FC = () => {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="mx-auto max-w-7xl px-5 py-20">
+  <section id="services" className="relative z-10 mx-auto max-w-7xl px-5 py-20">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.28em] text-cyan-300">
@@ -358,7 +495,7 @@ const App: React.FC = () => {
       </section>
 
       {/* INDUSTRIES */}
-      <section id="industries" className="mx-auto max-w-7xl px-5 pb-12">
+      <section id="industries" className="relative z-10 mx-auto max-w-7xl px-5 pb-12">
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.03] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.2)] backdrop-blur-xl md:p-8">
           <h3 className="text-2xl font-extrabold">Who we help</h3>
           <p className="mt-2 max-w-2xl text-sm leading-7 text-white/70">
@@ -380,7 +517,7 @@ const App: React.FC = () => {
       </section>
 
       {/* TRUST STRIP */}
-      <section className="mx-auto max-w-7xl px-5 pb-20">
+      <section className="relative z-10 mx-auto max-w-7xl px-5 pb-20">
         <div className="rounded-[2rem] border border-white/10 bg-[#0b1220] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.2)] md:p-8">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
@@ -413,7 +550,7 @@ const App: React.FC = () => {
       </section>
 
       {/* PROCESS */}
-      <section id="process" className="mx-auto max-w-7xl px-5 pb-20">
+    <section id="process" className="relative z-10 mx-auto max-w-7xl px-5 pb-20">
         <div className="rounded-[2rem] border border-white/10 bg-[#0b1220] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.2)] md:p-8">
           <h2 className="text-3xl font-extrabold tracking-[-0.03em]">
             Process
@@ -433,7 +570,7 @@ const App: React.FC = () => {
       </section>
 
       {/* WORK */}
-      <section id="clients" className="mx-auto max-w-7xl px-5 py-20 text-gray-200">
+      <section id="clients" className="relative z-10 mx-auto max-w-7xl px-5 py-20 text-gray-200">
         <div className="mb-14 flex flex-col items-center text-center">
           <p className="text-sm uppercase tracking-[0.28em] text-cyan-300">
             Recent Work
@@ -498,7 +635,7 @@ const App: React.FC = () => {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="mx-auto max-w-7xl px-5 pb-20">
+   <section id="contact" className="relative z-10 mx-auto max-w-7xl px-5 pb-20">
         <div className="rounded-[2rem] border border-white/10 bg-gradient-to-r from-cyan-500/15 via-white/5 to-indigo-500/15 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.25)] backdrop-blur-2xl md:p-10">
           <p className="text-sm uppercase tracking-[0.28em] text-cyan-300">
             Contact
@@ -539,7 +676,7 @@ const App: React.FC = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="relative overflow-hidden border-t border-white/10 bg-[#050814] text-white">
+    <footer className="relative z-10 overflow-hidden border-t border-white/10 bg-[#050814] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.10),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(99,102,241,0.14),transparent_30%)]" />
         <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:80px_80px]" />
 
