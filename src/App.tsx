@@ -186,48 +186,71 @@ function Particles() {
     </points>
   );
 }
-function SceneLights() {
-  return (
-    <>
-      <ambientLight intensity={0.8} />
-      <pointLight position={[4, 3, 4]} intensity={2.2} color="#22d3ee" />
-      <pointLight position={[-4, -2, 2]} intensity={1.8} color="#6366f1" />
-      <directionalLight position={[0, 3, 2]} intensity={1.2} color="#ffffff" />
-    </>
-  );
+ 
+
+
+function CameraMotion() {
+  useFrame((state) => {
+    const t = state.clock.elapsedTime;
+    state.camera.position.x = Math.sin(t * 0.2) * 0.5;
+    state.camera.position.y = Math.cos(t * 0.2) * 0.3;
+    state.camera.lookAt(0, 0, 0);
+  });
+
+  return null;
 }
+
 
 function ThreeBackground() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 opacity-80">
+    <div className="pointer-events-none absolute inset-0 z-0 opacity-90 mix-blend-screen">
+      
+      {/* Gradient Overlay (adds depth) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050814]/60 to-[#050814]" />
+
       <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
         <Suspense fallback={null}>
-          <SceneLights />
+
+          {/* 🔥 Improved Lights */}
+          <ambientLight intensity={0.9} />
+          <pointLight position={[5, 5, 5]} intensity={2.5} color="#22d3ee" />
+          <pointLight position={[-5, -3, 3]} intensity={2} color="#6366f1" />
+          <directionalLight position={[0, 4, 2]} intensity={1.2} />
+
+          {/* 🌫 Fog for depth */}
+          <fog attach="fog" args={["#050814", 6, 18]} />
+
+          {/* 🌠 Particles */}
           <Particles />
+
+          {/* 🔮 Orbs (slightly more spread & layered) */}
           <Orb
-            position={[-3.8, 1.8, -1]}
+            position={[-4.5, 2.2, -2]}
             color="#22d3ee"
             emissive="#0f766e"
-            scale={1.5}
+            scale={1.6}
           />
           <Orb
-            position={[4.2, -1.6, -1.5]}
+            position={[4.5, -2, -2]}
             color="#6366f1"
             emissive="#312e81"
-            scale={2}
+            scale={2.2}
           />
           <Orb
-            position={[0.4, 2.8, -3]}
+            position={[0.5, 3.2, -4]}
             color="#60a5fa"
             emissive="#1d4ed8"
-            scale={0.9}
+            scale={1}
           />
+
+          {/* 🎥 Smooth Camera Movement */}
+          <CameraMotion />
+
         </Suspense>
       </Canvas>
     </div>
   );
 }
-
 
 
 
