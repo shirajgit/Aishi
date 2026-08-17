@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMessageCircle, FiX, FiSend } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
-import { site, services } from '../../data/site';
+import { site, services, offer } from '../../data/site';
 
 /* =========================================================
    Aishi Assistant — a lightweight scripted chat widget.
@@ -25,8 +25,9 @@ const QUICK = ['Services', 'Pricing', 'Timeline', 'Contact'];
 
 function serviceReply(slug: string): { text: string; actions: Action[] } {
   const s = svc(slug)!;
+  const price = offer.active ? `Now from ${s.startingPrice} (was ${s.oldPrice}, ${offer.percent}% off)` : `Starts from ${s.startingPrice}`;
   return {
-    text: `${s.title}: ${s.desc} Starts from ${s.startingPrice}, typically ${s.timeline}.`,
+    text: `${s.title}: ${s.desc} ${price}, typically ${s.timeline}.`,
     actions: [{ label: `See ${s.title}`, to: `/services/${s.slug}` }, WA],
   };
 }
@@ -44,7 +45,7 @@ function respond(raw: string): { text: string; actions?: Action[] } {
 
   if (has('price', 'pricing', 'cost', 'cheap', 'budget', 'rate', 'quote', '₹', 'rupee', 'money', 'afford'))
     return {
-      text: `Projects start from ${site.pricingFrom}, with a fixed price quoted up front — no surprises. A business website is around ₹8,999, web apps from ₹24,999, and AI features from ₹14,999. First consultation is free. Want a quick quote?`,
+      text: `Great news — we're running a ${offer.percent}% launch offer right now. Projects start from ${site.pricingFrom} (was ${site.pricingWas}), fixed price quoted up front. Business websites are ₹4,499, web apps from ₹12,499, and AI features from ₹7,499. First consultation is free. Want a quick quote?`,
       actions: [WA, CONTACT],
     };
 
@@ -55,8 +56,12 @@ function respond(raw: string): { text: string; actions?: Action[] } {
     };
 
   if (has('website', 'web app', 'webapp', 'dashboard', 'crm', 'admin', 'landing')) return serviceReply('custom-web-apps');
-  if (has('ai', 'automation', 'chatbot', 'chat bot', 'bot', 'gpt', 'smart')) return serviceReply('ai-automation');
-  if (has('school', 'college', 'student', 'education', 'attendance', 'fees')) return serviceReply('school-management');
+  if (has('mobile', 'android', 'ios', 'app store', 'play store', 'mobile app')) return serviceReply('mobile-apps');
+  if (has('marketing', 'seo', 'ads', 'social media', 'promote', 'promotion', 'leads', 'google ad', 'meta ad')) return serviceReply('digital-marketing');
+  if (has('ai', 'automation', 'chatbot', 'chat bot', 'gpt', 'smart search')) return serviceReply('ai-automation');
+  if (has('attendance', 'payroll', 'staff', 'employee', 'shift', 'biometric')) return serviceReply('attendance-system');
+  if (has('school', 'college', 'student', 'education', 'fees', 'timetable')) return serviceReply('school-management');
+  if (has('hospital', 'clinic', 'patient', 'doctor', 'pharmacy', 'medical', 'appointment')) return serviceReply('hospital-management');
   if (has('iot', 'hardware', 'sensor', 'esp32', 'arduino', 'home automation', 'smart home')) return serviceReply('iot-hardware');
   if (has('ecommerce', 'e-commerce', 'shop', 'store', 'sell', 'cart', 'product')) return serviceReply('ecommerce-stores');
   if (has('maintenance', 'support', 'update', 'fix', 'bug', 'monitor')) return serviceReply('maintenance-support');

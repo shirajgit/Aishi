@@ -5,7 +5,7 @@ import PageHero from '../components/ui/PageHero';
 import ContactCTA from '../components/sections/ContactCTA';
 import Reveal from '../components/ui/Reveal';
 import Tag from '../components/ui/Tag';
-import { getService, services, site } from '../data/site';
+import { getService, services, site, offer } from '../data/site';
 import { setMeta } from '../utils/seo';
 
 function StepList({ title, steps }: { title: string; steps: { title: string; desc: string }[] }) {
@@ -97,8 +97,23 @@ export default function ServiceDetailPage() {
             <div style={{ position: 'sticky', top: 100, borderRadius: 24, border: '1px solid var(--border)', background: 'rgba(8,14,31,0.7)', backdropFilter: 'blur(20px)', padding: 28 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
                 <div>
-                  <div style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: 'Poppins, sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>Starting from</div>
-                  <div className="glow-text" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 30 }}>{service.startingPrice}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                    <span style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: 'Poppins, sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Starting from</span>
+                    {offer.active && (
+                      <span style={{ fontSize: 10, fontFamily: 'Poppins, sans-serif', fontWeight: 800, letterSpacing: '0.06em', color: '#001018', background: 'linear-gradient(135deg, #38d9f5, #7b8cde)', borderRadius: 100, padding: '2px 8px' }}>
+                        {offer.percent}% OFF
+                      </span>
+                    )}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
+                    <span className="glow-text" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 30 }}>{service.startingPrice}</span>
+                    {offer.active && (
+                      <s style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 18, color: 'var(--text-muted)', opacity: 0.7 }}>{service.oldPrice}</s>
+                    )}
+                  </div>
+                  {offer.active && (
+                    <div style={{ fontSize: 11.5, color: 'var(--cyan)', marginTop: 6 }}>{offer.note}</div>
+                  )}
                 </div>
                 <div style={{ height: 1, background: 'var(--border)' }} />
                 <div>

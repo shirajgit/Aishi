@@ -17,6 +17,10 @@ import {
   FiCheckCircle,
   FiSend,
   FiWifi,
+  FiSmartphone,
+  FiTrendingUp,
+  FiUserCheck,
+  FiActivity,
 } from 'react-icons/fi';
 
 export type Step = { title: string; desc: string };
@@ -33,7 +37,8 @@ export type Service = {
   launch: Step[]; // how we launch it
   tech: string[];
   timeline: string;
-  startingPrice: string;
+  oldPrice: string; // real price before the launch discount (shown struck through)
+  startingPrice: string; // current price after 50% launch offer
   idealFor: string[];
 };
 
@@ -106,8 +111,17 @@ export const site = {
   instagram: 'https://www.instagram.com/aishitech/',
   location: 'Karnataka, India',
   url: 'https://aishi-technologies.vercel.app',
-  pricingFrom: '₹8,999',
+  pricingFrom: '₹4,499', // lowest current price after the 50% launch offer
+  pricingWas: '₹8,999', // real price before the offer
   replyTime: 'Within 24 hours',
+};
+
+/** Site-wide launch offer — change once, updates the banners and price tags. */
+export const offer = {
+  active: true,
+  percent: 50,
+  label: 'Launch Offer — 50% OFF',
+  note: 'Limited-time launch pricing for new projects.',
 };
 
 export const navItems: NavItem[] = [
@@ -149,8 +163,71 @@ export const services: Service[] = [
     ],
     tech: ['React', 'Node', 'MongoDB', 'TypeScript', 'Tailwind'],
     timeline: '2–8 days',
-    startingPrice: '₹24,999',
+    oldPrice: '₹24,999',
+    startingPrice: '₹12,499',
     idealFor: ['Growing businesses', 'Service companies', 'Startups', 'Agencies'],
+  },
+  {
+    slug: 'mobile-apps',
+    title: 'Mobile App Development',
+    desc: 'Android & iOS apps — bookings, orders, delivery, or your own product idea, all in your customers’ pocket.',
+    tag: 'Mobile',
+    icon: FiSmartphone,
+    intro:
+      'A good app puts your business in your customer’s pocket. We build fast, modern Android and iOS apps — from booking and delivery apps to internal tools for your team — from a single codebase, so it costs less and ships faster.',
+    includes: [
+      'Android and iOS from one codebase',
+      'Clean, native-feeling design',
+      'Push notifications',
+      'Payments and UPI built in',
+      'Admin panel to manage everything',
+      'Play Store & App Store submission',
+    ],
+    build: [
+      { title: 'Map your idea', desc: 'We work out the screens, users, and features your app actually needs — nothing extra.' },
+      { title: 'Design first', desc: 'You approve a clickable design of every screen before we start building.' },
+      { title: 'Build in stages', desc: 'We build feature by feature and share test builds you can install on your own phone.' },
+    ],
+    launch: [
+      { title: 'Publish to the stores', desc: 'We handle the Play Store and App Store submission and setup for you.' },
+      { title: 'Train and hand over', desc: 'We show your team how to run it and stay on for fixes and updates.' },
+    ],
+    tech: ['React Native', 'Expo', 'Node', 'MongoDB', 'Firebase'],
+    timeline: '1–4 weeks',
+    oldPrice: '₹34,999',
+    startingPrice: '₹17,499',
+    idealFor: ['Startups', 'Delivery businesses', 'Service apps', 'D2C brands'],
+  },
+  {
+    slug: 'business-websites',
+    title: 'Business Websites & Landing Pages',
+    desc: 'Fast, modern websites that make your business look serious and bring in enquiries.',
+    tag: 'Web',
+    icon: FiGlobe,
+    intro:
+      'Your website is often the first thing a customer sees. We build fast, modern sites that load quickly, look great on every phone, and are built to turn visitors into enquiries and calls.',
+    includes: [
+      'Custom design, no cheap templates',
+      'Mobile-first and fast-loading',
+      'Enquiry forms and WhatsApp buttons',
+      'Basic SEO so you show up on Google',
+      'Social and link-preview ready',
+      'Easy-to-update content',
+    ],
+    build: [
+      { title: 'Understand your business', desc: 'We learn what you offer and who you are trying to reach.' },
+      { title: 'Design the pages', desc: 'We design a clean, on-brand layout and get your approval before building.' },
+      { title: 'Build and optimise', desc: 'We build it fast and light, and set up SEO and link previews.' },
+    ],
+    launch: [
+      { title: 'Go live on your domain', desc: 'We connect your domain and deploy it to a fast host.' },
+      { title: 'Set up basics', desc: 'We add analytics and make sure Google can find you.' },
+    ],
+    tech: ['Next.js', 'React', 'Tailwind', 'Vercel'],
+    timeline: '2–5 days',
+    oldPrice: '₹8,999',
+    startingPrice: '₹4,499',
+    idealFor: ['Local businesses', 'Freelancers', 'Startups', 'Service providers'],
   },
   {
     slug: 'ai-automation',
@@ -179,8 +256,102 @@ export const services: Service[] = [
     ],
     tech: ['Claude API', 'Node', 'Python', 'FastAPI', 'React'],
     timeline: '3–10 days',
-    startingPrice: '₹14,999',
+    oldPrice: '₹14,999',
+    startingPrice: '₹7,499',
     idealFor: ['Support-heavy teams', 'Content businesses', 'SaaS products', 'Ops teams'],
+  },
+  {
+    slug: 'digital-marketing',
+    title: 'Digital Marketing',
+    desc: 'Get found and get customers — SEO, social media, and ads that actually bring in enquiries.',
+    tag: 'Marketing',
+    icon: FiTrendingUp,
+    intro:
+      'A great website only works if people find it. We help you get seen and get customers, with SEO, social media, and Google and Meta ads, plus content built to turn views into real enquiries and calls.',
+    includes: [
+      'SEO to rank higher on Google',
+      'Social media management and posts',
+      'Google and Meta (Facebook / Instagram) ads',
+      'Content, creatives, and reels',
+      'Landing pages built to convert',
+      'Monthly reports and insights',
+    ],
+    build: [
+      { title: 'Understand your goals', desc: 'We learn who your customers are and what a good lead is actually worth to you.' },
+      { title: 'Plan the channels', desc: 'We pick the right mix of SEO, social, and ads for your budget, not a one-size plan.' },
+      { title: 'Launch campaigns', desc: 'We set up and run your pages, posts, and ads with proper tracking from day one.' },
+    ],
+    launch: [
+      { title: 'Track and optimise', desc: 'We watch what works, cut what does not, and keep improving your cost per lead.' },
+      { title: 'Report every month', desc: 'You get a plain-English summary of reach, leads, and what we are doing next.' },
+    ],
+    tech: ['SEO', 'Google Ads', 'Meta Ads', 'Analytics', 'Canva'],
+    timeline: 'Ongoing',
+    oldPrice: '₹6,999/mo',
+    startingPrice: '₹3,499/mo',
+    idealFor: ['Local businesses', 'Startups', 'Clinics', 'Online stores'],
+  },
+  {
+    slug: 'ecommerce-stores',
+    title: 'E-commerce Stores',
+    desc: 'Online stores with products, cart, payments, and orders, ready to start selling.',
+    tag: 'E-commerce',
+    icon: FiShoppingCart,
+    intro:
+      'Whether you sell one product or a hundred, we build online stores that are easy for customers to buy from and easy for you to manage. Products, cart, payments, and orders, all handled.',
+    includes: [
+      'Product catalogue with images and variants',
+      'Cart and smooth checkout',
+      'Online payments and UPI',
+      'Order and inventory management',
+      'WhatsApp order confirmations',
+      'Admin panel to run the store',
+    ],
+    build: [
+      { title: 'Plan your catalogue', desc: 'We set up how your products, categories, and pricing should work.' },
+      { title: 'Design the storefront', desc: 'We design a clean shopping experience and get your sign-off.' },
+      { title: 'Build store and admin', desc: 'We build the shop plus the panel you use to manage orders and stock.' },
+    ],
+    launch: [
+      { title: 'Connect payments', desc: 'We set up and test your payment gateway so money reaches you safely.' },
+      { title: 'Go live and train', desc: 'We launch the store and show you how to add products and handle orders.' },
+    ],
+    tech: ['Next.js', 'React', 'Node', 'MongoDB', 'Razorpay'],
+    timeline: '4–10 days',
+    oldPrice: '₹19,999',
+    startingPrice: '₹9,999',
+    idealFor: ['Retail shops', 'D2C brands', 'Restaurants', 'Home businesses'],
+  },
+  {
+    slug: 'attendance-system',
+    title: 'Attendance & Staff Management',
+    desc: 'Track staff attendance, shifts, leaves, and payroll for your company or startup — from one dashboard.',
+    tag: 'HR / Ops',
+    icon: FiUserCheck,
+    intro:
+      'Stop chasing registers and spreadsheets. We build attendance systems that log your staff in and out — by app, QR, or biometric — and turn it into leaves, shifts, payroll, and reports automatically.',
+    includes: [
+      'App, QR, or biometric check-in',
+      'Live attendance dashboard',
+      'Leave and shift management',
+      'Automatic payroll and salary reports',
+      'Late, overtime, and absence tracking',
+      'Role-based admin and staff logins',
+    ],
+    build: [
+      { title: 'Understand your team', desc: 'We map your shifts, roles, leave rules, and how you want people to check in.' },
+      { title: 'Design the panels', desc: 'We design the admin and staff views and get your sign-off before building.' },
+      { title: 'Build and connect', desc: 'We build attendance, leaves, and payroll and wire in QR or biometric devices.' },
+    ],
+    launch: [
+      { title: 'Roll out to staff', desc: 'We add your team, train the admins, and start with a short trial run.' },
+      { title: 'Ongoing support', desc: 'We adjust rules, add features, and keep it running as your team grows.' },
+    ],
+    tech: ['React', 'Node', 'MongoDB', 'Tailwind'],
+    timeline: '4–10 days',
+    oldPrice: '₹19,999',
+    startingPrice: '₹9,999',
+    idealFor: ['Companies', 'Startups', 'Factories', 'Offices'],
   },
   {
     slug: 'school-management',
@@ -210,8 +381,40 @@ export const services: Service[] = [
     ],
     tech: ['React', 'Node', 'MongoDB', 'Tailwind'],
     timeline: '5–14 days',
-    startingPrice: '₹29,999',
+    oldPrice: '₹29,999',
+    startingPrice: '₹14,999',
     idealFor: ['Schools', 'Colleges', 'Coaching centres', 'Training institutes'],
+  },
+  {
+    slug: 'hospital-management',
+    title: 'Hospital & Clinic Management',
+    desc: 'Patients, appointments, billing, pharmacy, and records — one system to run a clinic or hospital.',
+    tag: 'Healthcare',
+    icon: FiActivity,
+    intro:
+      'Running a clinic or hospital on paper slows everyone down. We build one system that handles patient records, appointments, billing, and pharmacy, with a clean dashboard your doctors and staff can actually use.',
+    includes: [
+      'Patient records and history',
+      'Appointment booking and scheduling',
+      'Billing, invoices, and insurance',
+      'Pharmacy and stock management',
+      'Doctor, staff, and department roles',
+      'Reports and analytics',
+    ],
+    build: [
+      { title: 'Understand your setup', desc: 'We learn your departments, doctors, billing, and how patients move through your day.' },
+      { title: 'Design the panels', desc: 'We design the reception, doctor, and admin views and get your approval first.' },
+      { title: 'Build module by module', desc: 'Records, appointments, billing, and pharmacy are built and tested one at a time.' },
+    ],
+    launch: [
+      { title: 'Import and train', desc: 'We move your existing data in and train reception, doctors, and admin staff.' },
+      { title: 'Ongoing support', desc: 'We keep it updated and add new departments or features whenever you need.' },
+    ],
+    tech: ['React', 'Node', 'MongoDB', 'Tailwind'],
+    timeline: '1–3 weeks',
+    oldPrice: '₹34,999',
+    startingPrice: '₹17,499',
+    idealFor: ['Clinics', 'Hospitals', 'Diagnostic labs', 'Polyclinics'],
   },
   {
     slug: 'iot-hardware',
@@ -240,68 +443,9 @@ export const services: Service[] = [
     ],
     tech: ['ESP32 / ESP8266', 'Arduino', 'MQTT', 'React', 'Node'],
     timeline: '4–12 days',
-    startingPrice: '₹19,999',
+    oldPrice: '₹19,999',
+    startingPrice: '₹9,999',
     idealFor: ['Homeowners', 'Retail shops', 'Makers', 'Hardware startups'],
-  },
-  {
-    slug: 'business-websites',
-    title: 'Business Websites & Landing Pages',
-    desc: 'Fast, modern websites that make your business look serious and bring in enquiries.',
-    tag: 'Web',
-    icon: FiGlobe,
-    intro:
-      'Your website is often the first thing a customer sees. We build fast, modern sites that load quickly, look great on every phone, and are built to turn visitors into enquiries and calls.',
-    includes: [
-      'Custom design, no cheap templates',
-      'Mobile-first and fast-loading',
-      'Enquiry forms and WhatsApp buttons',
-      'Basic SEO so you show up on Google',
-      'Social and link-preview ready',
-      'Easy-to-update content',
-    ],
-    build: [
-      { title: 'Understand your business', desc: 'We learn what you offer and who you are trying to reach.' },
-      { title: 'Design the pages', desc: 'We design a clean, on-brand layout and get your approval before building.' },
-      { title: 'Build and optimise', desc: 'We build it fast and light, and set up SEO and link previews.' },
-    ],
-    launch: [
-      { title: 'Go live on your domain', desc: 'We connect your domain and deploy it to a fast host.' },
-      { title: 'Set up basics', desc: 'We add analytics and make sure Google can find you.' },
-    ],
-    tech: ['Next.js', 'React', 'Tailwind', 'Vercel'],
-    timeline: '2–5 days',
-    startingPrice: '₹8,999',
-    idealFor: ['Local businesses', 'Freelancers', 'Startups', 'Service providers'],
-  },
-  {
-    slug: 'ecommerce-stores',
-    title: 'E-commerce Stores',
-    desc: 'Online stores with products, cart, payments, and orders, ready to start selling.',
-    tag: 'E-commerce',
-    icon: FiShoppingCart,
-    intro:
-      'Whether you sell one product or a hundred, we build online stores that are easy for customers to buy from and easy for you to manage. Products, cart, payments, and orders, all handled.',
-    includes: [
-      'Product catalogue with images and variants',
-      'Cart and smooth checkout',
-      'Online payments and UPI',
-      'Order and inventory management',
-      'WhatsApp order confirmations',
-      'Admin panel to run the store',
-    ],
-    build: [
-      { title: 'Plan your catalogue', desc: 'We set up how your products, categories, and pricing should work.' },
-      { title: 'Design the storefront', desc: 'We design a clean shopping experience and get your sign-off.' },
-      { title: 'Build store and admin', desc: 'We build the shop plus the panel you use to manage orders and stock.' },
-    ],
-    launch: [
-      { title: 'Connect payments', desc: 'We set up and test your payment gateway so money reaches you safely.' },
-      { title: 'Go live and train', desc: 'We launch the store and show you how to add products and handle orders.' },
-    ],
-    tech: ['Next.js', 'React', 'Node', 'MongoDB', 'Razorpay'],
-    timeline: '4–10 days',
-    startingPrice: '₹19,999',
-    idealFor: ['Retail shops', 'D2C brands', 'Restaurants', 'Home businesses'],
   },
   {
     slug: 'maintenance-support',
@@ -329,7 +473,8 @@ export const services: Service[] = [
     ],
     tech: ['Any stack', 'Vercel', 'Render', 'MongoDB'],
     timeline: 'Ongoing',
-    startingPrice: '₹2,999/mo',
+    oldPrice: '₹2,999/mo',
+    startingPrice: '₹1,499/mo',
     idealFor: ['Existing clients', 'Busy owners', 'Growing stores', 'Any business online'],
   },
 ];

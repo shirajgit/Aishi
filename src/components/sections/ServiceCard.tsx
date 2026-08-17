@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
-import type { Service } from '../../data/site';
+import { offer, type Service } from '../../data/site';
 
 export default function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
@@ -24,8 +24,17 @@ export default function ServiceCard({ service, index }: { service: Service; inde
       <h3 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 16, marginBottom: 12, lineHeight: 1.35 }}>{service.title}</h3>
       <p style={{ fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.75 }}>{service.desc}</p>
 
-      <div style={{ marginTop: 'auto', paddingTop: 20, borderTop: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>From {service.startingPrice}</span>
+      <div style={{ marginTop: 'auto', paddingTop: 20, borderTop: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <span style={{ fontSize: 12, color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'baseline', gap: 6, flexWrap: 'wrap' }}>
+          From
+          {offer.active && <s style={{ opacity: 0.5 }}>{service.oldPrice}</s>}
+          <strong style={{ color: 'var(--cyan)', fontFamily: 'Poppins, sans-serif', fontSize: 13 }}>{service.startingPrice}</strong>
+          {offer.active && (
+            <span style={{ fontSize: 9, fontFamily: 'Poppins, sans-serif', fontWeight: 800, letterSpacing: '0.06em', color: '#001018', background: 'linear-gradient(135deg, #38d9f5, #7b8cde)', borderRadius: 100, padding: '2px 7px' }}>
+              {offer.percent}% OFF
+            </span>
+          )}
+        </span>
         <span style={{ fontSize: 12.5, fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: 'var(--cyan)', display: 'inline-flex', alignItems: 'center', gap: 5 }}>
           Learn more <FiArrowRight aria-hidden />
         </span>

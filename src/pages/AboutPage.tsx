@@ -21,7 +21,7 @@ import StatsBar from '../components/sections/StatsBar';
 import ContactCTA from '../components/sections/ContactCTA';
 import SectionHeader from '../components/ui/SectionHeader';
 import Reveal from '../components/ui/Reveal';
-import { site } from '../data/site';
+import { site, offer } from '../data/site';
 import { setMeta } from '../utils/seo';
 
 const values = [
@@ -85,7 +85,7 @@ const principles = [
 ];
 
 /** Honest side-by-side so the value is obvious. Aishi column is highlighted. */
-const comparison = [
+const comparison: { name: string; price: string; was?: string; note: string; highlight: boolean; rows: { ok: boolean; text: string }[] }[] = [
   {
     name: 'Big Agency',
     price: '₹80,000+',
@@ -102,7 +102,8 @@ const comparison = [
   {
     name: 'Aishi',
     price: site.pricingFrom,
-    note: 'Same quality, honest price',
+    was: site.pricingWas,
+    note: '50% launch offer on new projects',
     highlight: true,
     rows: [
       { ok: true, text: 'Live in 2–8 days' },
@@ -307,10 +308,13 @@ export default function AboutPage() {
                 <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 14, color: col.highlight ? 'var(--cyan)' : 'var(--text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 12 }}>
                   {col.name}
                 </div>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
                   <span className={col.highlight ? 'glow-text' : undefined} style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 32, color: col.highlight ? undefined : 'var(--text)' }}>
                     {col.price}
                   </span>
+                  {col.was && (
+                    <s style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 17, color: 'var(--text-muted)', opacity: 0.7 }}>{col.was}</s>
+                  )}
                 </div>
                 <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 6, marginBottom: 22 }}>{col.note}</div>
 
@@ -334,11 +338,14 @@ export default function AboutPage() {
           <div style={{ borderRadius: 24, border: '1px solid rgba(56,217,245,0.15)', background: 'rgba(56,217,245,0.05)', padding: '28px 32px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 32 }}>
               <div>
-                <div className="glow-text" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 30, lineHeight: 1 }}>Up to 80%</div>
-                <div style={{ fontSize: 12.5, color: 'var(--text-dim)', marginTop: 6 }}>cheaper than a typical agency</div>
+                <div className="glow-text" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 30, lineHeight: 1 }}>{offer.percent}% OFF</div>
+                <div style={{ fontSize: 12.5, color: 'var(--text-dim)', marginTop: 6 }}>launch offer on new projects</div>
               </div>
               <div>
-                <div className="glow-text" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 30, lineHeight: 1 }}>From {site.pricingFrom}</div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                  <span className="glow-text" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 30, lineHeight: 1 }}>From {site.pricingFrom}</span>
+                  <s style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 16, color: 'var(--text-muted)', opacity: 0.7 }}>{site.pricingWas}</s>
+                </div>
                 <div style={{ fontSize: 12.5, color: 'var(--text-dim)', marginTop: 6 }}>fixed price, quoted up front</div>
               </div>
               <div>
