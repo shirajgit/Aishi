@@ -8,8 +8,8 @@ import { setMeta } from '../utils/seo';
 const methods = [
   { icon: '✉', label: 'Email', value: site.email, href: `mailto:${site.email}` },
   { icon: '💬', label: 'WhatsApp', value: 'Chat with us', href: site.whatsapp },
+  { icon: '📸', label: 'Instagram', value: '@aishitech', href: site.instagram },
   { icon: '📍', label: 'Location', value: site.location, href: null },
-  { icon: '⚡', label: 'Reply Time', value: site.replyTime, href: null },
 ];
 
 export default function ContactPage() {

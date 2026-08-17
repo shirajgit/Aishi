@@ -2,6 +2,22 @@
    Site data & content
 ======================= */
 
+import type { IconType } from 'react-icons';
+import {
+  FiLayout,
+  FiZap,
+  FiBookOpen,
+  FiCpu,
+  FiGlobe,
+  FiShoppingCart,
+  FiTool,
+  FiSearch,
+  FiPenTool,
+  FiCode,
+  FiCheckCircle,
+  FiSend,
+} from 'react-icons/fi';
+
 export type Step = { title: string; desc: string };
 
 export type Service = {
@@ -9,7 +25,7 @@ export type Service = {
   title: string;
   desc: string; // short line for the card
   tag: string;
-  icon: string;
+  icon: IconType;
   intro: string; // longer intro for the detail page
   includes: string[]; // what you get
   build: Step[]; // how we make it
@@ -69,7 +85,7 @@ export type ProcessStep = {
   n: string;
   title: string;
   desc: string;
-  icon: string;
+  icon: IconType;
   /** concrete things that happen in this step, tied to what we build */
   points: string[];
 };
@@ -86,6 +102,7 @@ export const site = {
   tagline: 'Web · AI · IoT · Automation',
   email: 'hello.aishitech@gmail.com',
   whatsapp: 'https://wa.me/918105369922',
+  instagram: 'https://www.instagram.com/aishitech/',
   location: 'Karnataka, India',
   url: 'https://aishi-technologies.vercel.app',
   pricingFrom: '₹8,999',

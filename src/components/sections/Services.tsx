@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { services } from '../../data/site';
 import ServiceCard from './ServiceCard';
+import AnyServiceCard from './AnyServiceCard';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
 
@@ -40,6 +41,9 @@ export default function Services({ showCta = true }: { showCta?: boolean }) {
             <ServiceCard service={s} index={i} />
           </Reveal>
         ))}
+        <Reveal delay={services.length * 80} style={{ height: '100%' }}>
+          <AnyServiceCard />
+        </Reveal>
       </div>
 
       {/* Capabilities strip */}
