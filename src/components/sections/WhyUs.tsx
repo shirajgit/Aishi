@@ -1,4 +1,4 @@
-import { FiUsers, FiTag, FiTarget, FiLifeBuoy, FiZap, FiMessageCircle } from 'react-icons/fi';
+import { FiUsers, FiTag, FiTarget, FiLifeBuoy, FiZap, FiMessageCircle, FiGift, FiTrendingUp, FiDollarSign, FiAward, FiShield, FiSmartphone } from 'react-icons/fi';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
 
@@ -32,6 +32,36 @@ const reasons = [
     icon: FiMessageCircle,
     title: 'Honest advice',
     desc: 'If you do not need something, we will tell you. We would rather build the right thing than the biggest thing.',
+  },
+  {
+    icon: FiGift,
+    title: 'Free first consultation',
+    desc: 'Tell us your idea with zero commitment. We map it out and give you a clear quote before you spend a rupee.',
+  },
+  {
+    icon: FiDollarSign,
+    title: 'Prices that fit your budget',
+    desc: 'Pricing flexes with your scope, and we are always open to work it out on WhatsApp to make it affordable.',
+  },
+  {
+    icon: FiTrendingUp,
+    title: 'Built to rank on Google',
+    desc: 'SEO-friendly builds with proper meta data so real customers actually find you online.',
+  },
+  {
+    icon: FiAward,
+    title: 'Proven track record',
+    desc: '30+ projects delivered for businesses, schools, and shops that now run smoother every day.',
+  },
+  {
+    icon: FiSmartphone,
+    title: 'Looks great on every phone',
+    desc: 'Mobile-first design that loads fast and works perfectly on phones, tablets, and desktops.',
+  },
+  {
+    icon: FiShield,
+    title: 'Secure and reliable',
+    desc: 'Safe logins, regular backups, and uptime monitoring so your data and customers stay protected.',
   },
 ];
 

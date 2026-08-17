@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowRight, FiGrid, FiBookOpen, FiHome } from 'react-icons/fi';
+import { FiArrowRight, FiGlobe, FiSmartphone, FiCpu } from 'react-icons/fi';
 import { site, techStack } from '../../data/site';
 import StaticGlowBackground from '../three/StaticGlowBackground';
 
@@ -15,9 +15,9 @@ const StatCard = ({ label, value }: { label: string; value: string }) => (
 );
 
 const heroCardItems = [
-  { title: 'Business Management System', desc: 'CRM, billing, staff roles, reports, dashboards.', icon: FiGrid },
-  { title: 'School / College Portal', desc: 'Attendance, fees, timetable, student profiles, admin.', icon: FiBookOpen },
-  { title: 'Home Automation (IoT)', desc: 'Smart lights, sensors, dashboards & mobile control.', icon: FiHome },
+  { title: 'Websites & Online Stores', desc: 'Fast sites and e-commerce that bring in enquiries and sales.', icon: FiGlobe },
+  { title: 'Web & Mobile Apps', desc: 'Business systems, portals, and Android / iOS apps.', icon: FiSmartphone },
+  { title: 'AI, Automation & IoT', desc: 'Smart assistants, automated workflows, and IoT dashboards.', icon: FiCpu },
 ];
 
 export default function Hero() {
@@ -56,12 +56,13 @@ export default function Hero() {
             </div>
 
             <h1 className="section-title anim-fade-up-d1" style={{ fontSize: 'clamp(40px, 5vw, 68px)', lineHeight: 1.03, marginBottom: 24 }}>
-              We build the <span className="glow-text">web apps</span> your business actually runs on.
+              We build the <span className="glow-text">software, sites &amp; apps</span> your business actually runs on.
             </h1>
 
             <p className="anim-fade-up-d2" style={{ fontSize: 16, lineHeight: 1.8, color: 'var(--text-dim)', maxWidth: 520, marginBottom: 40 }}>
-              We're {site.name}. We make custom web apps, automation, and IoT systems for businesses,
-              schools, and shops that are tired of doing everything by hand.
+              We're {site.name}. We build custom websites, web &amp; mobile apps, e-commerce stores, AI tools,
+              digital marketing, and IoT systems for businesses, schools, and shops that are tired of doing
+              everything by hand.
             </p>
 
             <div className="anim-fade-up-d3" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 48 }}>
