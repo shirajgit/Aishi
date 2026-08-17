@@ -110,7 +110,7 @@ export const site = {
   whatsapp: 'https://wa.me/918105369922',
   instagram: 'https://www.instagram.com/aishitech/',
   location: 'Karnataka, India',
-  url: 'https://aishi-technologies.vercel.app',
+  url: 'https://www.aishitech.online',
   pricingFrom: '₹4,499', // lowest current price after the 50% launch offer
   pricingWas: '₹8,999', // real price before the offer
   replyTime: 'Within 24 hours',
