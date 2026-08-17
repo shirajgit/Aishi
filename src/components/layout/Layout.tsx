@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import CursorGlow from '../ui/CursorGlow';
+import ChatWidget from '../ui/ChatWidget';
 
 /** App shell: cursor glow + nav on top, routed page in the middle, footer at the bottom. */
 export default function Layout() {
@@ -18,6 +19,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <ChatWidget />
     </div>
   );
 }

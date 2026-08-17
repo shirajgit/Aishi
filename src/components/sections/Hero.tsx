@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FiArrowRight, FiGrid, FiBookOpen, FiHome } from 'react-icons/fi';
 import { site, techStack } from '../../data/site';
 import StaticGlowBackground from '../three/StaticGlowBackground';
 
@@ -14,9 +15,9 @@ const StatCard = ({ label, value }: { label: string; value: string }) => (
 );
 
 const heroCardItems = [
-  { title: 'Business Management System', desc: 'CRM, billing, staff roles, reports, dashboards.', icon: '◈' },
-  { title: 'School / College Portal', desc: 'Attendance, fees, timetable, student profiles, admin.', icon: '◇' },
-  { title: 'Home Automation (IoT)', desc: 'Smart lights, sensors, dashboards & mobile control.', icon: '⬡' },
+  { title: 'Business Management System', desc: 'CRM, billing, staff roles, reports, dashboards.', icon: FiGrid },
+  { title: 'School / College Portal', desc: 'Attendance, fees, timetable, student profiles, admin.', icon: FiBookOpen },
+  { title: 'Home Automation (IoT)', desc: 'Smart lights, sensors, dashboards & mobile control.', icon: FiHome },
 ];
 
 export default function Hero() {
@@ -64,7 +65,7 @@ export default function Hero() {
             </p>
 
             <div className="anim-fade-up-d3" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 48 }}>
-              <Link to="/contact" className="btn-primary">Start a Project →</Link>
+              <Link to="/contact" className="btn-primary">Start a Project <FiArrowRight /></Link>
               <Link to="/work" className="btn-ghost">See Our Work</Link>
             </div>
 
@@ -108,7 +109,7 @@ export default function Hero() {
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <span style={{ fontSize: 20, color: 'var(--cyan)', opacity: 0.7, lineHeight: 1, marginTop: 2 }}>{item.icon}</span>
+                    <span style={{ fontSize: 20, color: 'var(--cyan)', opacity: 0.7, lineHeight: 1, marginTop: 2, display: 'inline-flex' }}><item.icon /></span>
                     <div>
                       <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: 13, marginBottom: 4 }}>{item.title}</div>
                       <div style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.6 }}>{item.desc}</div>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import { setMeta } from '../utils/seo';
 
 export default function NotFoundPage() {
@@ -18,7 +19,7 @@ export default function NotFoundPage() {
         <p style={{ fontSize: 15, color: 'var(--text-dim)', maxWidth: 420, margin: '16px auto 32px', lineHeight: 1.75 }}>
           The page you're looking for doesn't exist or has moved. Let's get you back on track.
         </p>
-        <Link to="/" className="btn-primary">← Back to Home</Link>
+        <Link to="/" className="btn-primary"><FiArrowLeft /> Back to Home</Link>
       </div>
     </section>
   );

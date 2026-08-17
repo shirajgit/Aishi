@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { FiMail } from 'react-icons/fi';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import { navItems, site } from '../../data/site';
 
 const linkHover = {
@@ -82,14 +84,14 @@ export default function Footer() {
             <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--cyan)', marginBottom: 20 }}>
               Connect
             </div>
-            <a href={`mailto:${site.email}`} style={{ display: 'block', fontSize: 13, color: 'var(--text-muted)', textDecoration: 'none', marginBottom: 12, transition: 'color 0.2s' }} {...linkHover}>
-              {site.email}
+            <a href={`mailto:${site.email}`} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-muted)', textDecoration: 'none', marginBottom: 12, transition: 'color 0.2s' }} {...linkHover}>
+              <FiMail style={{ flexShrink: 0 }} /> {site.email}
             </a>
-            <a href={site.whatsapp} target="_blank" rel="noreferrer" style={{ display: 'block', fontSize: 13, color: 'var(--text-muted)', textDecoration: 'none', marginBottom: 12, transition: 'color 0.2s' }} {...linkHover}>
-              WhatsApp →
+            <a href={site.whatsapp} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-muted)', textDecoration: 'none', marginBottom: 12, transition: 'color 0.2s' }} {...linkHover}>
+              <FaWhatsapp style={{ flexShrink: 0 }} /> WhatsApp
             </a>
-            <a href={site.instagram} target="_blank" rel="noreferrer" style={{ display: 'block', fontSize: 13, color: 'var(--text-muted)', textDecoration: 'none', marginBottom: 20, transition: 'color 0.2s' }} {...linkHover}>
-              Instagram →
+            <a href={site.instagram} target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-muted)', textDecoration: 'none', marginBottom: 20, transition: 'color 0.2s' }} {...linkHover}>
+              <FaInstagram style={{ flexShrink: 0 }} /> Instagram
             </a>
             <div style={{ borderRadius: 16, border: '1px solid var(--border)', background: 'rgba(2,5,15,0.6)', padding: 16 }}>
               <div style={{ fontSize: 10, fontFamily: 'Poppins, sans-serif', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 6 }}>

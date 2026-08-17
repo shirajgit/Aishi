@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FiArrowRight, FiGithub } from 'react-icons/fi';
 import { githubUser } from '../../data/site';
 
 /**
@@ -41,11 +42,11 @@ export default function MoreCard({ count, showAllLink }: { count: number; showAl
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           {showAllLink ? (
             <Link to="/work" className="btn-primary" style={{ fontSize: 12 }}>
-              See all work →
+              See all work <FiArrowRight />
             </Link>
           ) : (
             <a href={`https://github.com/${githubUser}`} target="_blank" rel="noreferrer" className="btn-primary" style={{ fontSize: 12 }}>
-              View GitHub →
+              <FiGithub /> View GitHub
             </a>
           )}
           <Link to="/contact" className="btn-ghost" style={{ fontSize: 12 }}>

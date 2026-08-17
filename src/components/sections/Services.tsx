@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 import { services } from '../../data/site';
 import ServiceCard from './ServiceCard';
 import AnyServiceCard from './AnyServiceCard';
@@ -30,7 +31,7 @@ export default function Services({ showCta = true }: { showCta?: boolean }) {
         />
         {showCta && (
           <Reveal delay={100}>
-            <Link to="/contact" className="btn-ghost">Ask Pricing →</Link>
+            <Link to="/contact" className="btn-ghost">Ask Pricing <FiArrowRight /></Link>
           </Reveal>
         )}
       </div>

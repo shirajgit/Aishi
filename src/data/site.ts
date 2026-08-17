@@ -16,6 +16,7 @@ import {
   FiCode,
   FiCheckCircle,
   FiSend,
+  FiWifi,
 } from 'react-icons/fi';
 
 export type Step = { title: string; desc: string };
@@ -124,7 +125,7 @@ export const services: Service[] = [
     title: 'Custom Web Apps',
     desc: 'Dashboards, admin panels, CRM and billing tools that take the manual work off your team every day.',
     tag: 'Web / SaaS',
-    icon: '◈',
+    icon: FiLayout,
     intro:
       'If your team runs on spreadsheets, WhatsApp, and paper, a custom web app pulls it all into one place. We build the exact tool your business needs, not an off-the-shelf product you have to bend your workflow around.',
     includes: [
@@ -156,7 +157,7 @@ export const services: Service[] = [
     title: 'AI Features & Automation',
     desc: "Chatbots, smart search, and automated workflows that handle the repetitive stuff so people don't have to.",
     tag: 'AI',
-    icon: '◎',
+    icon: FiCpu,
     intro:
       'AI is only useful when it saves real hours. We add smart features on top of your product where they actually help, so your team can stop doing the same repetitive tasks every day.',
     includes: [
@@ -186,7 +187,7 @@ export const services: Service[] = [
     title: 'School Management Systems',
     desc: 'Attendance, fees, staff and student records, timetables, and one admin panel that keeps it all in order.',
     tag: 'Education',
-    icon: '◇',
+    icon: FiBookOpen,
     intro:
       'Running a school or college on registers and spreadsheets is slow and error-prone. We build one system that handles attendance, fees, staff, students, and timetables, with a clean admin panel that ties it all together.',
     includes: [
@@ -217,7 +218,7 @@ export const services: Service[] = [
     title: 'IoT & Hardware Prototyping',
     desc: 'Smart home setups, sensors, and device controls you can watch and run from a live dashboard.',
     tag: 'IoT',
-    icon: '⬡',
+    icon: FiWifi,
     intro:
       'We connect the physical world to the web, whether that is smart lights at home, sensors in a shop, or a prototype for a hardware idea. You get live control and monitoring from a simple dashboard on your phone.',
     includes: [
@@ -247,7 +248,7 @@ export const services: Service[] = [
     title: 'Business Websites & Landing Pages',
     desc: 'Fast, modern websites that make your business look serious and bring in enquiries.',
     tag: 'Web',
-    icon: '✦',
+    icon: FiGlobe,
     intro:
       'Your website is often the first thing a customer sees. We build fast, modern sites that load quickly, look great on every phone, and are built to turn visitors into enquiries and calls.',
     includes: [
@@ -277,7 +278,7 @@ export const services: Service[] = [
     title: 'E-commerce Stores',
     desc: 'Online stores with products, cart, payments, and orders, ready to start selling.',
     tag: 'E-commerce',
-    icon: '◇',
+    icon: FiShoppingCart,
     intro:
       'Whether you sell one product or a hundred, we build online stores that are easy for customers to buy from and easy for you to manage. Products, cart, payments, and orders, all handled.',
     includes: [
@@ -307,7 +308,7 @@ export const services: Service[] = [
     title: 'Maintenance & Support',
     desc: 'Keep your site or app fast, secure, and up to date without lifting a finger.',
     tag: 'Support',
-    icon: '◎',
+    icon: FiTool,
     intro:
       'Launching is just the start. We keep your website or app running smoothly with regular updates, fixes, backups, and small changes whenever you need them, so you never have to worry about it breaking.',
     includes: [
@@ -408,7 +409,7 @@ export const processSteps: ProcessStep[] = [
     n: '01',
     title: 'Discovery',
     desc: 'We figure out what you need, who it is for, and what it should cost.',
-    icon: '◎',
+    icon: FiSearch,
     points: [
       'Map how your work runs today',
       'Agree on features and scope',
@@ -419,7 +420,7 @@ export const processSteps: ProcessStep[] = [
     n: '02',
     title: 'UI / UX Design',
     desc: 'You see the whole thing on screen and sign off before we write any code.',
-    icon: '◇',
+    icon: FiPenTool,
     points: [
       'Wireframes of every screen',
       'Polished, on-brand final design',
@@ -430,7 +431,7 @@ export const processSteps: ProcessStep[] = [
     n: '03',
     title: 'Development',
     desc: 'We build the actual product on a modern, reliable stack.',
-    icon: '◈',
+    icon: FiCode,
     points: [
       'Dashboards, panels and portals',
       'Secure logins and user roles',
@@ -441,7 +442,7 @@ export const processSteps: ProcessStep[] = [
     n: '04',
     title: 'AI & Automation',
     desc: 'Where it saves real time, we add smart features on top.',
-    icon: '✦',
+    icon: FiZap,
     points: [
       'Chatbots and smart search',
       'Automated workflows and reminders',
@@ -452,7 +453,7 @@ export const processSteps: ProcessStep[] = [
     n: '05',
     title: 'Testing & Review',
     desc: 'We check everything on real devices before it reaches your users.',
-    icon: '◉',
+    icon: FiCheckCircle,
     points: [
       'Tested on mobile and desktop',
       'Bugs fixed and speed tuned',
@@ -463,7 +464,7 @@ export const processSteps: ProcessStep[] = [
     n: '06',
     title: 'Launch & Support',
     desc: 'We put it live and stick around long after the handover.',
-    icon: '⬡',
+    icon: FiSend,
     points: [
       'Deployed and monitored',
       'Team training and handover',

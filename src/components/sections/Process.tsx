@@ -1,3 +1,4 @@
+import { FiCheck } from 'react-icons/fi';
 import { processSteps } from '../../data/site';
 import Tag from '../ui/Tag';
 import Reveal from '../ui/Reveal';
@@ -32,7 +33,7 @@ export default function Process() {
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-                      <span style={{ fontSize: 24, color: 'var(--cyan)', opacity: 0.55 }}>{step.icon}</span>
+                      <span style={{ fontSize: 24, color: 'var(--cyan)', opacity: 0.55, display: 'inline-flex' }}><step.icon /></span>
                       <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 800, fontSize: 13, letterSpacing: '0.14em', color: 'rgba(56,217,245,0.35)' }}>
                         {step.n}
                       </span>
@@ -44,7 +45,7 @@ export default function Process() {
                     <ul style={{ listStyle: 'none', display: 'grid', gap: 8, borderTop: '1px solid var(--border)', paddingTop: 16 }}>
                       {step.points.map((p) => (
                         <li key={p} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', fontSize: 12.5, color: 'var(--text-muted)', lineHeight: 1.55 }}>
-                          <span style={{ color: 'var(--cyan)', fontSize: 10, marginTop: 3, flexShrink: 0 }}>✓</span>
+                          <FiCheck style={{ color: 'var(--cyan)', fontSize: 12, marginTop: 2, flexShrink: 0 }} />
                           {p}
                         </li>
                       ))}

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { FiArrowLeft, FiArrowRight, FiCheck } from 'react-icons/fi';
 import PageHero from '../components/ui/PageHero';
 import ContactCTA from '../components/sections/ContactCTA';
 import Reveal from '../components/ui/Reveal';
@@ -43,7 +44,7 @@ export default function ServiceDetailPage() {
       <section style={{ minHeight: '70vh', display: 'grid', placeItems: 'center', textAlign: 'center', padding: '160px 24px' }}>
         <div>
           <h1 className="section-title" style={{ fontSize: 32, marginBottom: 16 }}>Service not found</h1>
-          <Link to="/services" className="btn-primary">← Back to Services</Link>
+          <Link to="/services" className="btn-primary"><FiArrowLeft /> Back to Services</Link>
         </div>
       </section>
     );
@@ -68,7 +69,7 @@ export default function ServiceDetailPage() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12 }}>
                 {service.includes.map((item) => (
                   <div key={item} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '14px 16px', borderRadius: 14, border: '1px solid var(--border)', background: 'rgba(255,255,255,0.02)' }}>
-                    <span style={{ color: 'var(--cyan)', fontSize: 12, marginTop: 2 }}>✓</span>
+                    <FiCheck style={{ color: 'var(--cyan)', fontSize: 14, marginTop: 1, flexShrink: 0 }} />
                     <span style={{ fontSize: 13.5, color: 'var(--text-dim)', lineHeight: 1.6 }}>{item}</span>
                   </div>
                 ))}
@@ -114,7 +115,7 @@ export default function ServiceDetailPage() {
                   </div>
                 </div>
                 <Link to="/contact" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: 4 }}>
-                  Start this project →
+                  Start this project <FiArrowRight />
                 </Link>
                 <a href={site.whatsapp} target="_blank" rel="noreferrer" className="btn-ghost" style={{ width: '100%', justifyContent: 'center' }}>
                   Ask on WhatsApp
@@ -132,10 +133,10 @@ export default function ServiceDetailPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
             {others.map((s) => (
               <Link key={s.slug} to={`/services/${s.slug}`} className="card-glass" style={{ borderRadius: 20, padding: 24, textDecoration: 'none', color: 'inherit' }}>
-                <div style={{ fontSize: 24, color: 'var(--cyan)', opacity: 0.6, marginBottom: 12 }}>{s.icon}</div>
+                <div style={{ fontSize: 24, color: 'var(--cyan)', opacity: 0.6, marginBottom: 12, display: 'flex' }}><s.icon /></div>
                 <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 15, marginBottom: 8 }}>{s.title}</div>
                 <div style={{ fontSize: 13, color: 'var(--text-dim)', lineHeight: 1.65, marginBottom: 12 }}>{s.desc}</div>
-                <span style={{ fontSize: 12.5, fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: 'var(--cyan)' }}>Learn more →</span>
+                <span style={{ fontSize: 12.5, fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: 'var(--cyan)', display: 'inline-flex', alignItems: 'center', gap: 5 }}>Learn more <FiArrowRight /></span>
               </Link>
             ))}
           </div>

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
+import { FiStar, FiX, FiArrowUpRight, FiGithub } from 'react-icons/fi';
 import type { Client } from '../../data/site';
 
 type RepoDetail = {
@@ -41,10 +42,10 @@ function fmtDate(iso?: string): string {
   return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-function Stat({ label, value }: { label: string; value: string | number }) {
+function Stat({ label, value }: { label: string; value: ReactNode }) {
   return (
     <div style={{ borderRadius: 14, border: '1px solid var(--border)', background: 'rgba(255,255,255,0.02)', padding: '12px 14px' }}>
-      <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 18 }}>{value}</div>
+      <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 18, display: 'flex', alignItems: 'center', gap: 6 }}>{value}</div>
       <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>{label}</div>
     </div>
   );
@@ -153,9 +154,9 @@ export default function ProjectModal({ project, onClose }: { project: Client; on
             <button
               onClick={onClose}
               aria-label="Close"
-              style={{ flexShrink: 0, width: 36, height: 36, borderRadius: '50%', border: '1px solid var(--border)', background: 'rgba(255,255,255,0.04)', color: 'var(--text)', cursor: 'pointer', fontSize: 18, lineHeight: 1 }}
+              style={{ flexShrink: 0, width: 36, height: 36, borderRadius: '50%', border: '1px solid var(--border)', background: 'rgba(255,255,255,0.04)', color: 'var(--text)', cursor: 'pointer', fontSize: 18, lineHeight: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              ×
+              <FiX />
             </button>
           </div>
 
@@ -198,7 +199,7 @@ export default function ProjectModal({ project, onClose }: { project: Client; on
           {/* Stats grid */}
           {detail && (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: 10, marginBottom: 24 }}>
-              <Stat label="Stars" value={`★ ${detail.stargazers_count}`} />
+              <Stat label="Stars" value={<><FiStar /> {detail.stargazers_count}</>} />
               <Stat label="Forks" value={detail.forks_count} />
               <Stat label="Started" value={fmtDate(detail.created_at)} />
               <Stat label="Last update" value={fmtDate(detail.pushed_at)} />
@@ -211,12 +212,12 @@ export default function ProjectModal({ project, onClose }: { project: Client; on
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             {project.link && (
               <a href={project.link} target="_blank" rel="noreferrer" className="btn-primary" style={{ fontSize: 12 }}>
-                Visit live site →
+                Visit live site <FiArrowUpRight />
               </a>
             )}
             {project.repo && (
               <a href={project.repo} target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: 12 }}>
-                View code
+                <FiGithub /> View code
               </a>
             )}
           </div>

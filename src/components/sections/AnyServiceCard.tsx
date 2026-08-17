@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FiPlus, FiArrowRight } from 'react-icons/fi';
 import { site } from '../../data/site';
 
 /**
@@ -23,7 +24,7 @@ export default function AnyServiceCard() {
       <div className="dot-bg" style={{ position: 'absolute', inset: 0, opacity: 0.4 }} />
 
       <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <div style={{ fontSize: 28, color: 'var(--cyan)', opacity: 0.7, marginBottom: 20, lineHeight: 1 }}>✳</div>
+        <div style={{ fontSize: 28, color: 'var(--cyan)', opacity: 0.7, marginBottom: 20, lineHeight: 1, display: 'flex' }}><FiPlus /></div>
 
         <div style={{ display: 'inline-block', width: 'fit-content', background: 'rgba(56,217,245,0.1)', border: '1px solid rgba(56,217,245,0.2)', borderRadius: 100, padding: '3px 10px', fontSize: 10, fontFamily: 'Poppins, sans-serif', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--cyan)', textTransform: 'uppercase', marginBottom: 14 }}>
           Anything Tech
@@ -40,7 +41,7 @@ export default function AnyServiceCard() {
         <div style={{ marginTop: 'auto', paddingTop: 20 }}>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn-primary" style={{ fontSize: 12 }}>
-              Talk to us →
+              Talk to us <FiArrowRight />
             </Link>
             <a href={site.whatsapp} target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: 12 }}>
               WhatsApp

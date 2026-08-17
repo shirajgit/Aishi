@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { FiArrowRight, FiCheckCircle } from 'react-icons/fi';
 import { site } from '../../data/site';
 
 const budgets = ['< ₹10k', '₹10k – ₹25k', '₹25k – ₹50k', '₹50k+', 'Not sure yet'];
@@ -81,12 +82,12 @@ export default function ContactForm() {
       </div>
 
       <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-        Send Requirement →
+        Send Requirement <FiArrowRight />
       </button>
 
       {sent && (
-        <p style={{ marginTop: 16, fontSize: 13, color: 'var(--cyan)', textAlign: 'center' }}>
-          ✓ Your email app should have opened with the message ready to send. Prefer WhatsApp?{' '}
+        <p style={{ marginTop: 16, fontSize: 13, color: 'var(--cyan)', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, flexWrap: 'wrap' }}>
+          <FiCheckCircle style={{ flexShrink: 0 }} /> Your email app should have opened with the message ready to send. Prefer WhatsApp?{' '}
           <a href={site.whatsapp} target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', textDecoration: 'underline' }}>Chat here</a>.
         </p>
       )}

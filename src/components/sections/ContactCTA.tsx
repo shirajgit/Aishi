@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 import { site } from '../../data/site';
 import Tag from '../ui/Tag';
 import Reveal from '../ui/Reveal';
@@ -22,7 +23,7 @@ export default function ContactCTA() {
             </p>
 
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
-              <Link to="/contact" className="btn-primary">Send Requirement →</Link>
+              <Link to="/contact" className="btn-primary">Send Requirement <FiArrowRight /></Link>
               <a href={site.whatsapp} target="_blank" rel="noreferrer" className="btn-ghost">WhatsApp Chat</a>
               <Link to="/services" className="btn-ghost">View Services</Link>
             </div>

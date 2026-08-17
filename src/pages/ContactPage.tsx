@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { FiMail, FiMapPin } from 'react-icons/fi';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import PageHero from '../components/ui/PageHero';
 import ContactForm from '../components/sections/ContactForm';
 import Reveal from '../components/ui/Reveal';
@@ -6,10 +8,10 @@ import { site } from '../data/site';
 import { setMeta } from '../utils/seo';
 
 const methods = [
-  { icon: '✉', label: 'Email', value: site.email, href: `mailto:${site.email}` },
-  { icon: '💬', label: 'WhatsApp', value: 'Chat with us', href: site.whatsapp },
-  { icon: '📸', label: 'Instagram', value: '@aishitech', href: site.instagram },
-  { icon: '📍', label: 'Location', value: site.location, href: null },
+  { icon: FiMail, label: 'Email', value: site.email, href: `mailto:${site.email}` },
+  { icon: FaWhatsapp, label: 'WhatsApp', value: 'Chat with us', href: site.whatsapp },
+  { icon: FaInstagram, label: 'Instagram', value: '@aishitech', href: site.instagram },
+  { icon: FiMapPin, label: 'Location', value: site.location, href: null },
 ];
 
 export default function ContactPage() {
@@ -44,7 +46,7 @@ export default function ContactPage() {
               {methods.map((m) => {
                 const inner = (
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: 16, borderRadius: 16, border: '1px solid var(--border)', background: 'rgba(255,255,255,0.02)', transition: 'border-color 0.2s, background 0.2s' }}>
-                    <span style={{ fontSize: 18 }}>{m.icon}</span>
+                    <span style={{ fontSize: 20, color: 'var(--cyan)', display: 'inline-flex', flexShrink: 0 }}><m.icon /></span>
                     <div>
                       <div style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: 'Poppins, sans-serif', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{m.label}</div>
                       <div style={{ fontSize: 14, color: 'var(--text)', marginTop: 2 }}>{m.value}</div>

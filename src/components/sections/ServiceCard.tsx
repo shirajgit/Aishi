@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 import type { Service } from '../../data/site';
 
 export default function ServiceCard({ service, index }: { service: Service; index: number }) {
@@ -12,7 +13,9 @@ export default function ServiceCard({ service, index }: { service: Service; inde
         0{index + 1}
       </div>
 
-      <div style={{ fontSize: 28, color: 'var(--cyan)', opacity: 0.6, marginBottom: 20, lineHeight: 1 }}>{service.icon}</div>
+      <div style={{ fontSize: 28, color: 'var(--cyan)', opacity: 0.6, marginBottom: 20, lineHeight: 1 }}>
+        <service.icon />
+      </div>
 
       <div style={{ display: 'inline-block', width: 'fit-content', background: 'rgba(56,217,245,0.08)', border: '1px solid rgba(56,217,245,0.15)', borderRadius: 100, padding: '3px 10px', fontSize: 10, fontFamily: 'Poppins, sans-serif', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--cyan)', textTransform: 'uppercase', marginBottom: 14 }}>
         {service.tag}
@@ -24,7 +27,7 @@ export default function ServiceCard({ service, index }: { service: Service; inde
       <div style={{ marginTop: 'auto', paddingTop: 20, borderTop: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>From {service.startingPrice}</span>
         <span style={{ fontSize: 12.5, fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: 'var(--cyan)', display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-          Learn more <span aria-hidden>→</span>
+          Learn more <FiArrowRight aria-hidden />
         </span>
       </div>
     </Link>

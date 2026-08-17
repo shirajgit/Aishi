@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 import { navItems, site } from '../../data/site';
 
 export default function Navbar() {
@@ -94,7 +95,7 @@ export default function Navbar() {
         </nav>
 
         <Link to="/contact" className="btn-primary hidden-mobile" style={{ fontSize: 12 }}>
-          Free Consultation <span style={{ opacity: 0.7 }}>→</span>
+          Free Consultation <FiArrowRight style={{ opacity: 0.7 }} />
         </Link>
 
         {/* Hamburger */}
@@ -173,7 +174,7 @@ export default function Navbar() {
               }}
             >
               <span>{item.label}</span>
-              <span style={{ opacity: 0.4, fontSize: 12 }}>→</span>
+              <FiArrowRight style={{ opacity: 0.4, fontSize: 12 }} />
             </NavLink>
           ))}
           <Link

@@ -1,3 +1,4 @@
+import { FiArrowRight, FiArrowUpRight, FiGithub } from 'react-icons/fi';
 import type { Client } from '../../data/site';
 
 export default function ClientCard({ client, onOpen }: { client: Client; onOpen?: () => void }) {
@@ -44,9 +45,9 @@ export default function ClientCard({ client, onOpen }: { client: Client; onOpen?
               rel="noreferrer"
               onClick={stop}
               aria-label="View source code"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 4, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border)', borderRadius: 100, padding: '6px 12px', fontSize: 12, fontFamily: 'Poppins, sans-serif', fontWeight: 600, color: 'var(--text-dim)', textDecoration: 'none', transition: 'background 0.2s' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border)', borderRadius: 100, padding: '6px 12px', fontSize: 12, fontFamily: 'Poppins, sans-serif', fontWeight: 600, color: 'var(--text-dim)', textDecoration: 'none', transition: 'background 0.2s' }}
             >
-              Code
+              <FiGithub /> Code
             </a>
           )}
           {c.link && (
@@ -57,7 +58,7 @@ export default function ClientCard({ client, onOpen }: { client: Client; onOpen?
               onClick={stop}
               style={{ display: 'inline-flex', alignItems: 'center', gap: 4, background: `${c.color}14`, border: `1px solid ${c.color}30`, borderRadius: 100, padding: '6px 14px', fontSize: 12, fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: c.color, textDecoration: 'none', transition: 'background 0.2s' }}
             >
-              Live →
+              Live <FiArrowUpRight />
             </a>
           )}
         </div>
@@ -75,7 +76,7 @@ export default function ClientCard({ client, onOpen }: { client: Client; onOpen?
 
       {clickable && (
         <div style={{ marginTop: 18, paddingTop: 16, borderTop: '1px solid var(--border)', fontSize: 12, fontFamily: 'Poppins, sans-serif', fontWeight: 600, color: c.color, display: 'flex', alignItems: 'center', gap: 6 }}>
-          View details <span aria-hidden>→</span>
+          View details <FiArrowRight aria-hidden />
         </div>
       )}
     </div>
