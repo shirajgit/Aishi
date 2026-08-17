@@ -52,6 +52,13 @@ export default function ServiceDetailPage() {
 
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
+  const waPriceLink = `${site.whatsapp}?text=${encodeURIComponent(
+    `Hi Aishi, I'm interested in "${service.title}" (${service.startingPrice}). Can you make the price a bit less?`
+  )}`;
+  const waAskLink = `${site.whatsapp}?text=${encodeURIComponent(
+    `Hi Aishi, I have a question about your "${service.title}" service.`
+  )}`;
+
   return (
     <>
       <PageHero tag={service.tag} title={service.title} subtitle={service.intro} />
@@ -114,6 +121,13 @@ export default function ServiceDetailPage() {
                   {offer.active && (
                     <div style={{ fontSize: 11.5, color: 'var(--cyan)', marginTop: 6 }}>{offer.note}</div>
                   )}
+                  <div style={{ fontSize: 11.5, color: 'var(--text-dim)', lineHeight: 1.6, marginTop: 8 }}>
+                    Price may vary by scope — it can be cheaper too.{' '}
+                    <a href={waPriceLink} target="_blank" rel="noreferrer" style={{ color: 'var(--cyan)', fontWeight: 600 }}>
+                      Chat on WhatsApp
+                    </a>{' '}
+                    and we can work it out to make it less.
+                  </div>
                 </div>
                 <div style={{ height: 1, background: 'var(--border)' }} />
                 <div>
@@ -132,7 +146,7 @@ export default function ServiceDetailPage() {
                 <Link to="/contact" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: 4 }}>
                   Start this project <FiArrowRight />
                 </Link>
-                <a href={site.whatsapp} target="_blank" rel="noreferrer" className="btn-ghost" style={{ width: '100%', justifyContent: 'center' }}>
+                <a href={waAskLink} target="_blank" rel="noreferrer" className="btn-ghost" style={{ width: '100%', justifyContent: 'center' }}>
                   Ask on WhatsApp
                 </a>
               </div>

@@ -208,9 +208,11 @@ export const services: Service[] = [
       'Your website is often the first thing a customer sees. We build fast, modern sites that load quickly, look great on every phone, and are built to turn visitors into enquiries and calls.',
     includes: [
       'Custom design, no cheap templates',
+      'Logo and brand identity design',
       'Mobile-first and fast-loading',
       'Enquiry forms and WhatsApp buttons',
-      'Basic SEO so you show up on Google',
+      'SEO-friendly build so you rank on Google',
+      'Proper meta tags, titles, and descriptions',
       'Social and link-preview ready',
       'Easy-to-update content',
     ],
