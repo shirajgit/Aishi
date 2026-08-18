@@ -1,105 +1,43 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import type { RouteRecord } from 'vite-react-ssg';
 import Layout from './components/layout/Layout';
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
+import WorkPage from './pages/WorkPage';
+import ProcessPage from './pages/ProcessPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
+import { services } from './data/site';
 
-// Each page is its own chunk — only the visited route is downloaded.
-const HomePage = lazy(() => import('./pages/HomePage'));
-const ServicesPage = lazy(() => import('./pages/ServicesPage'));
-const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'));
-const WorkPage = lazy(() => import('./pages/WorkPage'));
-const ProcessPage = lazy(() => import('./pages/ProcessPage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
-
-function PageFallback() {
-  return (
-    <div style={{ minHeight: '70vh', display: 'grid', placeItems: 'center' }}>
-      <div
-        style={{
-          width: 28,
-          height: 28,
-          borderRadius: '50%',
-          border: '2px solid rgba(56,217,245,0.2)',
-          borderTopColor: '#38d9f5',
-          animation: 'spin-slow 0.8s linear infinite',
-        }}
-      />
-    </div>
-  );
-}
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<PageFallback />}>
-                <HomePage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/services"
-            element={
-              <Suspense fallback={<PageFallback />}>
-                <ServicesPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/services/:slug"
-            element={
-              <Suspense fallback={<PageFallback />}>
-                <ServiceDetailPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/work"
-            element={
-              <Suspense fallback={<PageFallback />}>
-                <WorkPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/process"
-            element={
-              <Suspense fallback={<PageFallback />}>
-                <ProcessPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <Suspense fallback={<PageFallback />}>
-                <AboutPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <Suspense fallback={<PageFallback />}>
-                <ContactPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <Suspense fallback={<PageFallback />}>
-                <NotFoundPage />
-              </Suspense>
-            }
-          />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+/**
+ * Routes are pre-rendered to static HTML at build time by vite-react-ssg,
+ * so every page ships real content (and its own <title>, meta, and JSON-LD)
+ * in the initial HTML — not just an empty <div id="root">. The dynamic
+ * `services/:slug` route lists its concrete paths via getStaticPaths so each
+ * service page gets its own static file.
+ *
+ * Pages are imported eagerly: the one genuinely heavy chunk (the three.js
+ * hero background) stays lazy-loaded inside Hero, so route-level splitting
+ * is not worth the SSG complexity here.
+ */
+export const routes: RouteRecord[] = [
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'services', element: <ServicesPage /> },
+      {
+        path: 'services/:slug',
+        element: <ServiceDetailPage />,
+        getStaticPaths: () => services.map((s) => `/services/${s.slug}`),
+      },
+      { path: 'work', element: <WorkPage /> },
+      { path: 'process', element: <ProcessPage /> },
+      { path: 'about', element: <AboutPage /> },
+      { path: 'contact', element: <ContactPage /> },
+      { path: '*', element: <NotFoundPage /> },
+    ],
+  },
+];

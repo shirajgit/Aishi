@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FiArrowLeft, FiArrowRight, FiCheck } from 'react-icons/fi';
 import PageHero from '../components/ui/PageHero';
 import ContactCTA from '../components/sections/ContactCTA';
 import Reveal from '../components/ui/Reveal';
 import Tag from '../components/ui/Tag';
+import Seo from '../components/ui/Seo';
 import { getService, services, site, offer } from '../data/site';
-import { setMeta } from '../utils/seo';
+import { serviceLd, breadcrumbLd } from '../utils/schema';
 
 function StepList({ title, steps }: { title: string; steps: { title: string; desc: string }[] }) {
   return (
@@ -33,15 +33,15 @@ export default function ServiceDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? getService(slug) : undefined;
 
-  useEffect(() => {
-    if (service) {
-      setMeta(`${service.title} — Aishi Technologies`, service.intro.slice(0, 155));
-    }
-  }, [service]);
-
   if (!service) {
     return (
       <section style={{ minHeight: '70vh', display: 'grid', placeItems: 'center', textAlign: 'center', padding: '160px 24px' }}>
+        <Seo
+          title="Service not found — Aishi Technologies"
+          description="This service page doesn't exist. Browse all the services Aishi Technologies offers."
+          path={`/services/${slug ?? ''}`}
+          noindex
+        />
         <div>
           <h1 className="section-title" style={{ fontSize: 32, marginBottom: 16 }}>Service not found</h1>
           <Link to="/services" className="btn-primary"><FiArrowLeft /> Back to Services</Link>
@@ -61,6 +61,19 @@ export default function ServiceDetailPage() {
 
   return (
     <>
+      <Seo
+        title={`${service.title} — Aishi Technologies`}
+        description={service.desc}
+        path={`/services/${service.slug}`}
+        jsonLd={[
+          serviceLd(service),
+          breadcrumbLd([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+            { name: service.title, path: `/services/${service.slug}` },
+          ]),
+        ]}
+      />
       <PageHero tag={service.tag} title={service.title} subtitle={service.intro} />
 
       <section style={{ maxWidth: 1280, margin: '0 auto', padding: '72px 24px 40px' }}>

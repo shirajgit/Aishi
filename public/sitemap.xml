@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.aishitech.online/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.aishitech.online/services</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.aishitech.online/work</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/process</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.aishitech.online/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.aishitech.online/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/custom-web-apps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/mobile-apps</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/business-websites</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/ai-automation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/digital-marketing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/ecommerce-stores</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/attendance-system</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/school-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/hospital-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/iot-hardware</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.aishitech.online/services/maintenance-support</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/</loc><lastmod>2026-08-18</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.aishitech.online/services</loc><lastmod>2026-08-18</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.aishitech.online/work</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/process</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.aishitech.online/about</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.aishitech.online/contact</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/custom-web-apps</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/mobile-apps</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/business-websites</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/ai-automation</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/digital-marketing</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/ecommerce-stores</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/attendance-system</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/school-management</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/hospital-management</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/iot-hardware</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.aishitech.online/services/maintenance-support</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

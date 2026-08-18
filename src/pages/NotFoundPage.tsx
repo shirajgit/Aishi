@@ -1,17 +1,18 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import { setMeta } from '../utils/seo';
+import Seo from '../components/ui/Seo';
 
 export default function NotFoundPage() {
-  useEffect(() => {
-    setMeta('Page not found — Aishi Technologies', 'The page you are looking for does not exist.');
-  }, []);
-
   return (
     <section
       style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '160px 24px 100px', position: 'relative' }}
     >
+      <Seo
+        title="Page not found — Aishi Technologies"
+        description="The page you are looking for does not exist or has moved."
+        path="/404"
+        noindex
+      />
       <div className="grid-bg" style={{ position: 'absolute', inset: 0, opacity: 0.4 }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div className="section-title glow-text" style={{ fontSize: 'clamp(80px, 18vw, 180px)', lineHeight: 1 }}>404</div>

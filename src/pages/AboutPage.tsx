@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   FiPenTool,
   FiShield,
@@ -21,8 +20,9 @@ import StatsBar from '../components/sections/StatsBar';
 import ContactCTA from '../components/sections/ContactCTA';
 import SectionHeader from '../components/ui/SectionHeader';
 import Reveal from '../components/ui/Reveal';
+import Seo from '../components/ui/Seo';
 import { site, offer } from '../data/site';
-import { setMeta } from '../utils/seo';
+import { breadcrumbLd } from '../utils/schema';
 
 const values = [
   { icon: FiPenTool, title: 'Built from scratch', desc: 'No templates and no clutter. Every site is designed around what you actually need.' },
@@ -129,15 +129,17 @@ const comparison: { name: string; price: string; was?: string; note: string; hig
 ];
 
 export default function AboutPage() {
-  useEffect(() => {
-    setMeta(
-      'About — Aishi Technologies',
-      'Aishi Technologies helps businesses, startups, schools, and service companies grow with custom web apps, smart automation, and modern digital systems.'
-    );
-  }, []);
-
   return (
     <>
+      <Seo
+        title="About — Aishi Technologies"
+        description="Aishi Technologies helps businesses, startups, schools, and service companies grow with custom web apps, smart automation, and modern digital systems."
+        path="/about"
+        jsonLd={breadcrumbLd([
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
+        ])}
+      />
       <PageHero
         tag="About Us"
         title={<>A small team that builds <span className="glow-text">proper software</span></>}

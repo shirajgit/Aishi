@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
 import { FiMail, FiMapPin } from 'react-icons/fi';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import PageHero from '../components/ui/PageHero';
 import ContactForm from '../components/sections/ContactForm';
 import Reveal from '../components/ui/Reveal';
+import Seo from '../components/ui/Seo';
 import { site } from '../data/site';
-import { setMeta } from '../utils/seo';
+import { breadcrumbLd } from '../utils/schema';
 
 const methods = [
   { icon: FiMail, label: 'Email', value: site.email, href: `mailto:${site.email}` },
@@ -15,15 +15,17 @@ const methods = [
 ];
 
 export default function ContactPage() {
-  useEffect(() => {
-    setMeta(
-      'Contact — Aishi Technologies',
-      "Tell us your requirement, deadline, and budget. We'll reply within 24 hours with scope, timeline, and the best approach."
-    );
-  }, []);
-
   return (
     <>
+      <Seo
+        title="Contact — Aishi Technologies"
+        description="Tell us your requirement, deadline, and budget. We'll reply within 24 hours with scope, timeline, and the best approach."
+        path="/contact"
+        jsonLd={breadcrumbLd([
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' },
+        ])}
+      />
       <PageHero
         tag="Get in Touch"
         title={<>Let's talk about <span className="glow-text">what you need</span></>}
