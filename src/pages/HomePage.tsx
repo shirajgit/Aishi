@@ -6,6 +6,7 @@ import StatsBar from '../components/sections/StatsBar';
 import Industries from '../components/sections/Industries';
 import Process from '../components/sections/Process';
 import Work from '../components/sections/Work';
+import Testimonials from '../components/sections/Testimonials';
 import Faq from '../components/sections/Faq';
 import ContactCTA from '../components/sections/ContactCTA';
 import Seo from '../components/ui/Seo';
@@ -29,6 +30,7 @@ export default function HomePage() {
       <Industries />
       <Process />
       <Work limit={3} />
+      <Testimonials />
       <Faq />
       <ContactCTA />
     </>
