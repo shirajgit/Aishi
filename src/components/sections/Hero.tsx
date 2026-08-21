@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useSyncExternalStore } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiGlobe, FiSmartphone, FiCpu } from 'react-icons/fi';
 import { site, techStack } from '../../data/site';
@@ -20,14 +20,25 @@ const heroCardItems = [
   { title: 'AI, Automation & IoT', desc: 'Smart assistants, automated workflows, and IoT dashboards.', icon: FiCpu },
 ];
 
-export default function Hero() {
-  const [use3D, setUse3D] = useState(false);
+// Enable the heavy 3D background only on desktop with motion allowed. Read via
+// useSyncExternalStore so it stays in sync with the media queries without a
+// setState-in-effect, and renders the static fallback during SSG (server snapshot).
+const desktopMotionQueries = ['(min-width: 769px)', '(prefers-reduced-motion: reduce)'];
 
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isDesktop = window.matchMedia('(min-width: 769px)').matches;
-    setUse3D(isDesktop && !prefersReduced);
-  }, []);
+function subscribe(onChange: () => void) {
+  const mqls = desktopMotionQueries.map((q) => window.matchMedia(q));
+  mqls.forEach((mql) => mql.addEventListener('change', onChange));
+  return () => mqls.forEach((mql) => mql.removeEventListener('change', onChange));
+}
+
+function getUse3DSnapshot() {
+  const isDesktop = window.matchMedia('(min-width: 769px)').matches;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return isDesktop && !prefersReduced;
+}
+
+export default function Hero() {
+  const use3D = useSyncExternalStore(subscribe, getUse3DSnapshot, () => false);
 
   return (
     <section id="home" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>

@@ -86,6 +86,9 @@ export function useGithubRepos(): State {
       if (cached) {
         const { ts, repos } = JSON.parse(cached) as { ts: number; repos: Client[] };
         if (Date.now() - ts < CACHE_TTL && Array.isArray(repos) && repos.length) {
+          // Client-only sync from sessionStorage (unavailable during SSG, so it
+          // can't move to a lazy useState initialiser).
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setState({ repos, loading: false, error: false });
           return;
         }

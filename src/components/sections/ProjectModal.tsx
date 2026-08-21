@@ -54,7 +54,8 @@ function Stat({ label, value }: { label: string; value: ReactNode }) {
 export default function ProjectModal({ project, onClose }: { project: Client; onClose: () => void }) {
   const [detail, setDetail] = useState<RepoDetail | null>(null);
   const [languages, setLanguages] = useState<Record<string, number> | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Only "loading" when there's actually a GitHub repo to fetch details for.
+  const [loading, setLoading] = useState(() => ownerRepo(project.repo) !== null);
 
   // Close on Escape + lock body scroll while open.
   useEffect(() => {
@@ -70,10 +71,7 @@ export default function ProjectModal({ project, onClose }: { project: Client; on
   // Fetch richer detail for GitHub-sourced projects.
   useEffect(() => {
     const ref = ownerRepo(project.repo);
-    if (!ref) {
-      setLoading(false);
-      return;
-    }
+    if (!ref) return; // nothing to fetch — `loading` already initialised to false
     let active = true;
     Promise.all([
       fetch(`https://api.github.com/repos/${ref.owner}/${ref.name}`).then((r) => (r.ok ? r.json() : null)),
