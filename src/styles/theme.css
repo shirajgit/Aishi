@@ -187,13 +187,21 @@ a {
   animation: fadeUp 0.8s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Scroll reveal (IntersectionObserver toggles .is-visible) */
+/* Scroll reveal (IntersectionObserver toggles .is-visible).
+   Content is visible by DEFAULT so it always renders even if JS is slow,
+   cached-stale, or fails to load. The hidden start-state is only applied
+   once the app bundle has executed and added `.js` to <html>, making the
+   animation a pure progressive enhancement. */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }

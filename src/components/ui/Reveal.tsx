@@ -32,7 +32,15 @@ export default function Reveal({ children, delay = 0, style, className = '', as 
       { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
     );
     observer.observe(el);
-    return () => observer.disconnect();
+
+    // Safety net: if the observer never fires (layout quirks, 0-height at mount,
+    // unsupported env), force the content visible so it can't get stuck hidden.
+    const fallback = window.setTimeout(() => setVisible(true), 1500);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   const Tag = as;
