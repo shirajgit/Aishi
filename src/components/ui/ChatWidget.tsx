@@ -86,7 +86,7 @@ function respond(raw: string): { text: string; actions?: Action[] } {
 
   if (has('work', 'portfolio', 'project', 'example', 'client'))
     return {
-      text: "We've shipped 30+ projects — websites, apps, and systems for real businesses. Take a look and see if something feels close to what you need.",
+      text: "We build websites, apps, and systems for real businesses, and our portfolio links to the live sites. Take a look and see if something feels close to what you need.",
       actions: [{ label: 'See our work', to: '/work' }, WA],
     };
 

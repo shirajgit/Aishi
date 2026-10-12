@@ -63,6 +63,8 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 
 /** "What clients say" — social-proof grid on the home page. */
 export default function Testimonials() {
+  if (testimonials.length === 0) return null;
+
   return (
     <section style={{ maxWidth: 1280, margin: '0 auto', padding: '20px 24px 100px' }}>
       <SectionHeader

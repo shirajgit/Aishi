@@ -50,8 +50,8 @@ const reasons = [
   },
   {
     icon: FiAward,
-    title: 'Proven track record',
-    desc: '30+ projects delivered for businesses, schools, and shops that now run smoother every day.',
+    title: 'Work you can check',
+    desc: 'Every project in our portfolio links to the live site, so you can see what we build before you talk to us.',
   },
   {
     icon: FiSmartphone,

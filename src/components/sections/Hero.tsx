@@ -83,7 +83,7 @@ export default function Hero() {
 
             <div className="anim-fade-up-d4" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, maxWidth: 460 }}>
               <StatCard label="Delivery" value="2–8 days" />
-              <StatCard label="Projects" value="30+" />
+              <StatCard label="First call" value="Free" />
               <StatCard label="Response" value="< 24 hrs" />
             </div>
 

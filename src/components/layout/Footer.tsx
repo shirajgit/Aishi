@@ -109,6 +109,14 @@ export default function Footer() {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>© {year} {site.name}. All rights reserved.</p>
+          <div style={{ display: 'flex', gap: 20 }}>
+            <Link to="/privacy" style={{ fontSize: 12, color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} {...linkHover}>
+              Privacy Policy
+            </Link>
+            <Link to="/terms" style={{ fontSize: 12, color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }} {...linkHover}>
+              Terms of Use
+            </Link>
+          </div>
           <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>
             Designed &amp; Developed by{' '}
             <span style={{ background: 'linear-gradient(135deg, var(--cyan), var(--indigo))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontWeight: 700 }}>

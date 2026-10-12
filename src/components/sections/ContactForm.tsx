@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { FiArrowRight, FiCheckCircle } from 'react-icons/fi';
 import { site } from '../../data/site';
 
@@ -90,6 +91,11 @@ export default function ContactForm() {
       <button type="submit" className="btn-primary" disabled={status === 'sending'} style={{ width: '100%', justifyContent: 'center', opacity: status === 'sending' ? 0.7 : 1 }}>
         {status === 'sending' ? 'Sending…' : <>Send Requirement <FiArrowRight /></>}
       </button>
+
+      <p style={{ marginTop: 14, fontSize: 12, color: 'var(--text-muted)', textAlign: 'center' }}>
+        We only use your details to reply to this enquiry. See our{' '}
+        <Link to="/privacy" style={{ color: 'var(--text-dim)', textDecoration: 'underline' }}>Privacy Policy</Link>.
+      </p>
 
       {status === 'sent' && (
         <p role="status" style={{ marginTop: 16, fontSize: 13, color: 'var(--cyan)', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, flexWrap: 'wrap' }}>

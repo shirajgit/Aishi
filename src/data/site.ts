@@ -542,66 +542,11 @@ export type Testimonial = {
 };
 
 /**
- * Sample client testimonials. Replace the quotes with real, permission-granted
- * ones as you collect them — these are placeholders written in the voice of the
- * kind of local businesses, schools, and shops Aishi builds for.
+ * Client testimonials. Only add real quotes here, with the client's permission
+ * to publish their name and business. While this list is empty the Testimonials
+ * section on the home page is not rendered at all.
  */
-export const testimonials: Testimonial[] = [
-  {
-    name: 'Rohan Sharma',
-    role: 'Founder, Sharma Traders',
-    city: 'Bengaluru',
-    quote:
-      'We were running everything on WhatsApp and Excel. Aishi built us a billing and inventory dashboard in a week, and our staff picked it up the same day. Genuinely made our work easier.',
-    rating: 5,
-    color: '#38d9f5',
-  },
-  {
-    name: 'Priya Nair',
-    role: 'Director, Little Scholars School',
-    city: 'Mangaluru',
-    quote:
-      'Fees, attendance, and parent updates used to take our office hours every day. The school system they built handles it all now. Support has been quick whenever we needed a change.',
-    rating: 5,
-    color: '#a5b4fc',
-  },
-  {
-    name: 'Imran Sheikh',
-    role: 'Owner, Sheikh Electricals',
-    city: 'Belagavi',
-    quote:
-      'They designed our website and it actually brings in enquiries on WhatsApp now. Loads fast on mobile and looks far better than what our competitors have. Worth every rupee.',
-    rating: 5,
-    color: '#38d9f5',
-  },
-  {
-    name: 'Ananya Reddy',
-    role: 'Co-founder, Kaya Naturals',
-    city: 'Hyderabad',
-    quote:
-      'Our online store went live in under two weeks — products, UPI payments, and order management all sorted. The admin panel is so simple that my team runs it without any help.',
-    rating: 5,
-    color: '#a5b4fc',
-  },
-  {
-    name: 'Dr. Vikram Patil',
-    role: 'Owner, Sanjeevani Clinic',
-    city: 'Hubballi',
-    quote:
-      'Appointments, patient records, and billing are finally in one place. My reception staff love it. Aishi understood how a clinic actually runs before building anything.',
-    rating: 5,
-    color: '#38d9f5',
-  },
-  {
-    name: 'Karthik Iyer',
-    role: 'Operations Head, SwiftMove Logistics',
-    city: 'Bengaluru',
-    quote:
-      'The attendance and payroll system removed a whole manual job for us. Clear pricing up front, delivered on time, and they stayed on to add features as we grew. Solid team.',
-    rating: 5,
-    color: '#a5b4fc',
-  },
-];
+export const testimonials: Testimonial[] = [];
 
 export const marqueeItems: string[] = [
   'Web Apps',
@@ -616,10 +561,10 @@ export const marqueeItems: string[] = [
 ];
 
 export const stats: Stat[] = [
-  { value: '30+', label: 'Projects Delivered' },
-  { value: '30+', label: 'Happy Clients' },
+  { value: String(services.length), label: 'Services Offered' },
   { value: '2–8d', label: 'Typical Delivery' },
   { value: '< 24h', label: 'Response Time' },
+  { value: '₹0', label: 'First Consultation' },
 ];
 
 export const processSteps: ProcessStep[] = [

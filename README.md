@@ -90,8 +90,8 @@ AI • Software • Automation
 ## 📬 Get in Touch
 
 - LinkedIn: *https://www.linkedin.com/company/aishi-technologies*
-- Email: *shirajmujawar03@gamail.com*
-- Website: *https://aishi-technologies.vercel.app*
+- Email: *hello.aishitech@gmail.com*
+- Website: *https://www.aishitech.online*
 
 ---
 
